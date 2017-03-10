@@ -1,14 +1,13 @@
 Set-Location -Path $home\Downloads
 wget https://github.com/mattiewae/EncoderInstall/blob/master/update.zip?raw=true -OutFile .\update.zip
-Expand-Archive -Path .\update.zip
-Move-Item .\update\update.lnk -Destination 'C:\Users\ENG\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup' -Force
-Remove-Item .\update
+Expand-Archive -Path .\faspex.zip
+Move-Item .\faspex\faspex.lnk -Destination 'C:\Users\ENG\Desktop' -Force
+Remove-Item .\faspex
 
 
 $Connect = Test-Connection 'www.google.com' -Quiet
 
 if($Connect = $true){
-    choco install filezilla -y
     cup all -y 
 }
 else{
