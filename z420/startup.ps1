@@ -1,5 +1,5 @@
-Set-Location -Path $home\Desktop
-wget https://raw.githubusercontent.com/mattiewae/update/master/z420/faspex.website
+Set-Location -Path $home\Downloads
+wget https://github.com/mattiewae/update/blob/master/z420/faspex.zip?raw=true 
 
 
 $Connect = Test-Connection 'www.google.com' -Quiet
