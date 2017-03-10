@@ -1,8 +1,5 @@
-Set-Location -Path $home\Downloads
-wget https://github.com/mattiewae/EncoderInstall/blob/master/update.zip?raw=true -OutFile .\update.zip
-Expand-Archive -Path .\faspex.zip
-Move-Item .\faspex\faspex.lnk -Destination 'C:\Users\ENG\Desktop' -Force
-Remove-Item .\faspex
+Set-Location -Path $home\Desktop
+wget https://raw.githubusercontent.com/mattiewae/update/master/z420/faspex.website
 
 
 $Connect = Test-Connection 'www.google.com' -Quiet
