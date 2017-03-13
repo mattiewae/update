@@ -7,6 +7,7 @@ Move-Item .\faspex\faspex.website $home\Desktop -Force
 Remove-Item .\faspex.zip
 Remove-Item .\faspex -Recurse
 Remove-Item "$home\Desktop\Aspera Faspex.website"
+Remove-Item "$home\Desktop\Aspera Faspex.URL"
 
 
 
