@@ -1,5 +1,13 @@
 Set-Location -Path $home\Downloads
-wget https://github.com/mattiewae/update/blob/master/z420/faspex.zip?raw=true 
+wget https://github.com/mattiewae/update/blob/master/z420/faspex.zip?raw=true -OutFile .\faspex.zip
+Expand-Archive .\faspex.zip 
+Move-Item .\faspex\faspex.website $home\Desktop -Force
+
+
+Remove-Item .\faspex.zip
+Remove-Item .\faspex -Recurse
+Remove-Item "$home\Desktop\Aspera Faspex.website"
+
 
 
 $Connect = Test-Connection 'www.google.com' -Quiet
