@@ -3,7 +3,7 @@ wget https://github.com/mattiewae/update/blob/master/z420/faspex.zip?raw=true -O
  
 Expand-Archive .\faspex.zip -force
 
-Move-Item .\faspex\faspex.website $home\Desktop -force -recurse
+Move-Item .\faspex\faspex.website $home\Desktop -force 
 
 Remove-Item .\faspex.zip -force
 Remove-Item .\faspex -force
