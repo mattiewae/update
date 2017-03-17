@@ -1,13 +1,18 @@
 Set-Location -Path $home\Downloads
-wget https://github.com/mattiewae/update/blob/master/z420/faspex.zip?raw=true -OutFile .\faspex.zip 
+wget https://github.com/mattiewae/update/blob/master/z420/faspex.zip?raw=true -OutFile .\faspex.zip
+wget https://github.com/mattiewae/update/blob/master/zbook15/Encoder.zip?raw=true -OutFile .\encoder.zip
  
-Expand-Archive .\faspex.zip -force
+Expand-Archive .\faspex.zip 
+Expand-Archive .\encoder.zip
 
-Move-Item .\faspex\faspex.website $home\Desktop -force 
+Move-Item .\faspex\faspex.website $home\Desktop 
+Move-Item .\encoder\encoder_V20.exe $home\Desktop
 
-Remove-Item .\faspex.zip -force
-Remove-Item .\faspex -force
-Remove-Item "$home\Desktop\Aspera Faspex.website" -force
+Remove-Item .\encoder
+Remove-Item .\encoder.zip
+Remove-Item .\faspex.zip
+Remove-Item .\faspex
+Remove-Item "$home\Desktop\Aspera Faspex.website"
 
 $Connect = Test-Connection 'www.google.com' -Quiet
 
