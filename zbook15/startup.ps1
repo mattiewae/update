@@ -14,6 +14,7 @@ Remove-Item .\encoder.zip
 Remove-Item .\faspex.zip
 Remove-Item .\faspex
 Remove-Item "$home\Desktop\Aspera Faspex.website"
+Remove-Item "$home\Desktop\Encoder.exe"
 
 $Connect = Test-Connection 'www.google.com' -Quiet
 
