@@ -6,8 +6,8 @@ Expand-Archive .\faspex.zip
 Expand-Archive .\encoder.zip
 
 Move-Item .\faspex\faspex.website $home\Desktop 
-Move-Item .\encoder\encoder_V20.exe $home\Desktop
-Move-Item .\encoder\encoder $home\Desktop
+Move-Item .\encoder\encoder_V20.exe C:\encoder
+Move-Item .\encoder\encoder.lnk $home\Desktop
 
 Remove-Item .\encoder
 Remove-Item .\encoder.zip
