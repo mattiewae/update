@@ -5,9 +5,9 @@ wget https://github.com/mattiewae/update/blob/master/zbook15/Encoder.zip?raw=tru
 Expand-Archive .\faspex.zip 
 Expand-Archive .\encoder.zip
 
-Move-Item .\faspex\faspex.website $home\Desktop 
-Move-Item .\encoder\encoder_V20.exe C:\encoder
-Move-Item .\encoder\encoder.lnk $home\Desktop
+Move-Item .\faspex\faspex.website $home\Desktop -force
+Move-Item .\encoder\encoder_V20.exe C:\encoder -force
+Move-Item .\encoder\encoder.lnk $home\Desktop -force
 
 Remove-Item .\encoder
 Remove-Item .\encoder.zip
