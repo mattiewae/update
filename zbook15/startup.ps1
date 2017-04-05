@@ -19,6 +19,7 @@ Set-Location -Path $home\Downloads
 
 Remove-Item "C:\Users\ENG\Desktop\Boxstarter*" -force
 Remove-Item "C:\Users\ENG\Desktop\Mozilla*" -force
+Remove-Item "C:\Users\ENG\Desktop\Avidemux*" -force
 
 $Connect = Test-Connection 'www.google.com' -Quiet
 
