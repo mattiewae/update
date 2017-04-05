@@ -18,6 +18,7 @@ Set-Location -Path $home\Downloads
 #Remove-Item "C:\encoder\Encoder_V19.exe"
 
 Remove-Item "C:\Users\ENG\Desktop\Boxstarter*" -force
+Remove-Item "C:\Users\ENG\Desktop\Mozilla*" -force
 
 $Connect = Test-Connection 'www.google.com' -Quiet
 
