@@ -9,6 +9,9 @@ Remove-Item .\faspex -Recurse
 Remove-Item "$home\Desktop\Aspera Faspex.website"
 Remove-Item "$home\Desktop\Aspera Faspex.URL"
 
+Remove-Item "C:\Users\ENG\Desktop\Boxstarter*" -force
+Remove-Item "C:\Users\Public\Desktop\Avidemux*" -force
+Remove-Item "C:\Users\Public\Desktop\Mozilla*" -force
 
 
 $Connect = Test-Connection 'www.google.com' -Quiet
