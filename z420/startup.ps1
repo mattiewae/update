@@ -14,6 +14,8 @@ Remove-Item "C:\Users\Public\Desktop\Avidemux*" -force
 Remove-Item "C:\Users\Public\Desktop\Mozilla*" -force
 
 
+choco install tightvnc -y
+
 $Connect = Test-Connection 'www.google.com' -Quiet
 
 if($Connect = $true){
