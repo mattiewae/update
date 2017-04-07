@@ -15,7 +15,7 @@ Remove-Item "C:\Users\Public\Desktop\Mozilla*" -force
 Remove-Item "C:\Users\Public\Desktop\Libre*" -force
 
 
-choco install tightvnc -y
+#choco install tightvnc -y
 
 $Connect = Test-Connection 'www.google.com' -Quiet
 
