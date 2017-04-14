@@ -21,6 +21,7 @@ Remove-Item "C:\Users\ENG\Desktop\Boxstarter*" -force
 Remove-Item "C:\Users\Public\Desktop\Avidemux*" -force
 Remove-Item "C:\Users\Public\Desktop\Mozilla*" -force
 Remove-Item "C:\Users\Public\Desktop\Libre*" -force
+Remove-Item "C:\Users\Public\Desktop\Chrome*" -force
 
 
 choco install tightvnc -y
