@@ -17,6 +17,16 @@ Set-Location -Path $home\Downloads
 #Remove-Item "$home\Desktop\Encoder.exe"
 #Remove-Item "C:\encoder\Encoder_V19.exe"
 
+$Connect = Test-Connection 'www.google.com' -Quiet
+
+if($Connect = $true){
+    cup all -y 
+}
+else{
+    Start-Sleep -s 60
+    cup all -y
+}
+
 Remove-Item "C:\Users\ENG\Desktop\Boxstarter*" -force
 Remove-Item "C:\Users\Public\Desktop\Avidemux*" -force
 Remove-Item "C:\Users\Public\Desktop\Mozilla*" -force
@@ -27,12 +37,4 @@ Remove-Item "C:\Users\Public\Desktop\ccleaner*" -force
 
 choco install tightvnc -y
 
-$Connect = Test-Connection 'www.google.com' -Quiet
 
-if($Connect = $true){
-    cup all -y 
-}
-else{
-    Start-Sleep -s 60
-    cup all -y
-}
