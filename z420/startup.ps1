@@ -25,6 +25,7 @@ Remove-Item "C:\Users\Public\Desktop\Mozilla*" -force
 Remove-Item "C:\Users\Public\Desktop\Libre*" -force
 Remove-Item "C:\Users\Public\Desktop\Chrome*" -force
 Remove-Item "C:\Users\Public\Desktop\CCleaner*" -force
+Remove-Item "C:\Users\Public\Desktop\VLC*" -force
 
 #choco install tightvnc -y
 
