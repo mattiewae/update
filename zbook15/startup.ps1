@@ -27,8 +27,6 @@ else{
     cup all -y
 }
 
-Install-WindowsUpdate -acceptEula -SuppressReboots -criteria "BrowseOnly=0 and IsAssigned=1 and IsHidden=0 and IsInstalled=0 and Type='Software'"
-
 Remove-Item "C:\Users\ENG\Desktop\Boxstarter*" -force
 Remove-Item "C:\Users\Public\Desktop\Avidemux*" -force
 Remove-Item "C:\Users\Public\Desktop\Mozilla*" -force
@@ -39,5 +37,9 @@ Remove-Item "C:\Users\Public\Desktop\VLC*" -force
 
 
 choco install tightvnc -y
+
+
+Install-WindowsUpdate -acceptEula -SuppressReboots -criteria "BrowseOnly=0 and IsAssigned=1 and IsHidden=0 and IsInstalled=0 and Type='Software'"
+
 
 
