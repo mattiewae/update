@@ -41,10 +41,10 @@ function Wait-KeyPress($prompt='Druk op een toets ...!') {
 
 	$Host.UI.RawUI.FlushInputBuffer()
 }
-Wait-KeyPress
+
 
 &("C:\Users\ENG\Desktop\Admin Tools\Scripts\ImageChecker.ps1")
 
-
+Wait-KeyPress
 
 
