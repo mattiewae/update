@@ -1,4 +1,4 @@
-#Set-Location -Path $home\Downloads
+Clear-RecycleBin -Force#Set-Location -Path $home\Downloads
 #wget https://github.com/mattiewae/update/blob/master/z420/faspex.zip?raw=true -OutFile .\faspex.zip
 #Expand-Archive .\faspex.zip 
 #Move-Item .\faspex\faspex.website $home\Desktop -Force
@@ -29,7 +29,7 @@ Remove-Item "C:\Users\Public\Desktop\VLC*" -force
 
 Install-WindowsUpdate -acceptEula -SuppressReboots -criteria "BrowseOnly=0 and IsAssigned=1 and IsHidden=0 and IsInstalled=0 and Type='Software'"
 
-
+Clear-RecycleBin -Force
 
 
 
