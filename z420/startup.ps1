@@ -1,3 +1,4 @@
+
 Clear-RecycleBin -Force#Set-Location -Path $home\Downloads
 #wget https://github.com/mattiewae/update/blob/master/z420/faspex.zip?raw=true -OutFile .\faspex.zip
 #Expand-Archive .\faspex.zip 
@@ -31,6 +32,16 @@ Install-WindowsUpdate -acceptEula -SuppressReboots -criteria "BrowseOnly=0 and I
 
 Clear-RecycleBin -Force
 
+# Wachten op input voor af te sluiten
+function Wait-KeyPress($prompt='Druk op een toets ...!') {
+	Write-Host $prompt 	
+	do {
+		Start-Sleep -milliseconds 100
+	} until ($Host.UI.RawUI.KeyAvailable)
+
+	$Host.UI.RawUI.FlushInputBuffer()
+}
+Wait-KeyPress
 
 
 
