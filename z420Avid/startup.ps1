@@ -40,4 +40,4 @@ Expand-Archive .\obs.zip
 Move-Item .\obs\obs-studio $env:APPDATA -Force 
 
 Remove-Item .\obs.zip -force
-Remove-Item .\obs
+Remove-Item .\obs -Force -Recurse
