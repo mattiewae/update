@@ -33,6 +33,7 @@ Install-WindowsUpdate -acceptEula -SuppressReboots -criteria "BrowseOnly=0 and I
 
 
 choco install obs-studio -y
+choco install win-youtube-dl -y
 
 Set-Location -Path $home\Downloads
 wget https://github.com/mattiewae/update/raw/master/z420Avid/obs-studio.zip -OutFile .\obs.zip
