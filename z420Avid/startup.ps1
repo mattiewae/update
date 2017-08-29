@@ -32,8 +32,11 @@ Clear-RecycleBin -Force
 Install-WindowsUpdate -acceptEula -SuppressReboots -criteria "BrowseOnly=0 and IsAssigned=1 and IsHidden=0 and IsInstalled=0 and Type='Software'"
 
 
-#choco install tightvnc -y
+choco obs-studio -y
 
+Set-Location -Path $home\Downloads
+wget https://github.com/mattiewae/update/raw/master/z420Avid/obs-studio.zip -OutFile .\obs.zip
+Expand-Archive .\obs.zip 
+Move-Item .\obs\obs-studio $env:APPDATA -Force 
 
-
-
+Remove-Item .\obs.zip -force
