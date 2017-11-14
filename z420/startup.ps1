@@ -1,5 +1,6 @@
 
-Clear-RecycleBin -Force#Set-Location -Path $home\Downloads
+
+#Set-Location -Path $home\Downloads
 #wget https://github.com/mattiewae/update/blob/master/z420/faspex.zip?raw=true -OutFile .\faspex.zip
 #Expand-Archive .\faspex.zip 
 #Move-Item .\faspex\faspex.website $home\Desktop -Force
