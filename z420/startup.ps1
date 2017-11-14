@@ -45,6 +45,6 @@ function Wait-KeyPress($prompt='Druk op een toets ...!') {
 
 &("C:\Users\ENG\Desktop\Admin Tools\Scripts\ImageChecker.ps1")
 
-Wait-KeyPress
+#Wait-KeyPress
 
 
