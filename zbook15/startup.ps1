@@ -1,3 +1,4 @@
+Set-ExecutionPolicy RemoteSigned
 Set-Location -Path $home\Downloads
 #wget https://github.com/mattiewae/update/blob/master/z420/faspex.zip?raw=true -OutFile .\faspex.zip
 #wget https://github.com/mattiewae/update/blob/master/zbook15/Encoder.zip?raw=true -OutFile .\encoder.zip
