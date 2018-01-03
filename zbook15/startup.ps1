@@ -38,6 +38,7 @@ Remove-Item "C:\Users\Public\Desktop\VLC*" -force
 
 
 choco install tightvnc -y
+choco install filezilla
 
 
 Install-WindowsUpdate -acceptEula -SuppressReboots -criteria "BrowseOnly=0 and IsAssigned=1 and IsHidden=0 and IsInstalled=0 and Type='Software'"
