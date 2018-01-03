@@ -18,6 +18,8 @@ Set-Location -Path $home\Downloads
 #Remove-Item "$home\Desktop\Encoder.exe"
 #Remove-Item "C:\encoder\Encoder_V19.exe"
 
+choco install filezilla -y
+
 $Connect = Test-Connection 'www.google.com' -Quiet
 
 if($Connect = $true){
@@ -38,7 +40,7 @@ Remove-Item "C:\Users\Public\Desktop\VLC*" -force
 
 
 choco install tightvnc -y
-choco install filezilla
+choco install filezilla -y
 
 
 Install-WindowsUpdate -acceptEula -SuppressReboots -criteria "BrowseOnly=0 and IsAssigned=1 and IsHidden=0 and IsInstalled=0 and Type='Software'"
