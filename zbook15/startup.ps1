@@ -10,7 +10,7 @@ function Log-Message
     ("{0} - {1}" -f (Get-Date), $LogMessage)
 }
 
-Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\"
+Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
 
 
 Set-Location -Path "C:\Users\ENG\Downloads"
@@ -41,5 +41,5 @@ Remove-Item "C:\Users\Public\Desktop\VLC*" -force
 
 Install-WindowsUpdate -acceptEula -SuppressReboots -criteria "BrowseOnly=0 and IsAssigned=1 and IsHidden=0 and IsInstalled=0 and Type='Software'"
 
-Log-Message "Update Completed" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\"
+Log-Message "Update Completed" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
 
