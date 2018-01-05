@@ -1,4 +1,16 @@
+function Log-Message
+{
+    [CmdletBinding()]
+    Param
+    (
+        [Parameter(Mandatory=$true, Position=0)]
+        [string]$LogMessage
+    )
 
+    ("{0} - {1}" -f (Get-Date), $LogMessage)
+}
+
+Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
 
 Set-Location -Path $home\Downloads
 wget https://github.com/mattiewae/update/blob/master/z420/faspex.zip?raw=true -OutFile .\faspex.zip
@@ -33,21 +45,6 @@ Remove-Item "C:\Users\Public\Desktop\Mozilla*" -force
 
 Install-WindowsUpdate -acceptEula -SuppressReboots -criteria "BrowseOnly=0 and IsAssigned=1 and IsHidden=0 and IsInstalled=0 and Type='Software'"
 
-#Clear-RecycleBin -Force
-
-# Wachten op input voor af te sluiten
-function Wait-KeyPress($prompt='Druk op een toets ...!') {
-	Write-Host $prompt 	
-	do {
-		Start-Sleep -milliseconds 100
-	} until ($Host.UI.RawUI.KeyAvailable)
-
-	$Host.UI.RawUI.FlushInputBuffer()
-}
-
-
-#&("C:\Users\ENG\Desktop\Admin Tools\Scripts\ImageChecker.ps1")
-
-#Wait-KeyPress
+Log-Message "Update Completed" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
 
 
