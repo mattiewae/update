@@ -27,6 +27,8 @@ Remove-Item "C:\Users\Public\Desktop\VLC*" -force
 Remove-Item "C:\Users\Public\Desktop\Google*" -force
 Remove-Item "C:\Users\Public\Desktop\WinFF*" -force
 Remove-Item "C:\Users\Public\Desktop\Box*" -force
+Remove-Item "C:\Users\ENG\Desktop\WinDir*" -force
+
 
 
 Install-WindowsUpdate -acceptEula -SuppressReboots -criteria "BrowseOnly=0 and IsAssigned=1 and IsHidden=0 and IsInstalled=0 and Type='Software'"
