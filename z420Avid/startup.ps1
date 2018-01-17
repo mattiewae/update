@@ -30,7 +30,7 @@
 
 function OBS
 {
-  $choco = choco list -lo
+Â  $choco = choco list -lo
 
     if ($choco -like '*obs*') {
     Write-Host 'obs installed'
@@ -52,7 +52,7 @@ function OBS
 
 function Youtube-dl
 {
-  $choco = choco list -lo
+Â  $choco = choco list -lo
 
     if ($choco -like '*win-youtube-dl*') {
     Write-Host 'win-youtube-dl installed'
@@ -72,14 +72,15 @@ function RemoveItems
     Remove-Item "C:\Users\Public\Desktop\CCleaner*" -force
     Remove-Item "C:\Users\Public\Desktop\VLC*" -force
     Remove-Item "C:\Users\ENG\Desktop\WinDir*" -force
+    Remove-Item "C:\Users\Public\Desktop\Boxstarter*" -force
 }
 
-OBS
+#OBS
 
-Youtube-dl
+#Youtube-dl
 
 RemoveItems
 
-Clear-RecycleBin -Force
+#Clear-RecycleBin -Force
 
 Install-WindowsUpdate -acceptEula -SuppressReboots -criteria "BrowseOnly=0 and IsAssigned=1 and IsHidden=0 and IsInstalled=0 and Type='Software'"
