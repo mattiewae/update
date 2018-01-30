@@ -12,29 +12,8 @@ function Log-Message
 
 Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
 
-Set-Location -Path "C:\Users\ENG\Downloads"
-wget https://raw.githubusercontent.com/mattiewae/update/master/zbook15/SaveSettings -Outfile .\LaadSettings.ps1
-Remove-Item "C:\Users\ENG\Desktop\Admin Tools\Scripts\LaadSettings.ps1" -force 
-Move-Item "C:\Users\ENG\Downloads\LaadSettings.ps1" "C:\Users\ENG\Desktop\Admin Tools\Scripts\" -force 
-
-#wget https://github.com/mattiewae/update/blob/master/z420/faspex.zip?raw=true -OutFile .\faspex.zip
-#wget https://github.com/mattiewae/update/blob/master/zbook15/Encoder.zip?raw=true -OutFile .\encoder.zip
-#Expand-Archive .\faspex.zip 
-#Expand-Archive .\encoder.zip
-
-#Move-Item .\faspex\faspex.website $home\Desktop -force
-#Move-Item .\encoder\encoder_V20.exe C:\encoder -force
-#Move-Item .\encoder\encoder.lnk $home\Desktop -force
-
-#Remove-Item .\encoder
-#Remove-Item .\encoder.zip
-#Remove-Item .\faspex.zip
-#Remove-Item .\faspex
-#Remove-Item "$home\Desktop\Aspera Faspex.website"
-#Remove-Item "$home\Desktop\Encoder.exe"
-#Remove-Item "C:\encoder\Encoder_V19.exe"
-
 Remove-Item "C:\Users\ENG\Desktop\Boxstarter*" -force
+Remove-Item "C:\Users\ENG\Desktop\Windir*" -force
 Remove-Item "C:\Users\Public\Desktop\Avidemux*" -force
 Remove-Item "C:\Users\Public\Desktop\Mozilla*" -force
 Remove-Item "C:\Users\Public\Desktop\Libre*" -force
