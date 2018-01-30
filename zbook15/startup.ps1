@@ -14,6 +14,7 @@ Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Too
 
 Remove-Item "C:\Users\ENG\Desktop\Boxstarter*" -force
 Remove-Item "C:\Users\ENG\Desktop\Windir*" -force
+Remove-Item "C:\Users\ENG\Desktop\Google*" -force
 Remove-Item "C:\Users\Public\Desktop\Avidemux*" -force
 Remove-Item "C:\Users\Public\Desktop\Mozilla*" -force
 Remove-Item "C:\Users\Public\Desktop\Libre*" -force
