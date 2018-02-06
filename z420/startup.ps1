@@ -25,6 +25,24 @@ Set-Location -Path "C:\Users\ENG\Downloads"
 
 $Connect = Test-Connection 'www.google.com' -Quiet
 if($Connect = $true){
+
+    cinst wget -y
+    cinst flashplayerplugin -y
+    cinst flashplayeractivex -y
+    cinst googlechromex64 -y 
+    cinst firefox -y 
+    cinst notepadplusplus.install -y
+    cinst jre8 -y 
+    cinst vlc -y
+    cinst ccleaner -y
+    cinst adobeair -y
+    cinst windirstat -y
+    cinst quicktime -y 
+    cinst irfanview -y
+    cinst 7zip.install -y
+    cinst javaruntime -y
+    cinst putty -y  
+    cinst libreoffice -y
     cup all -y 
 }
 else{
