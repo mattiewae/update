@@ -14,8 +14,8 @@ Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Too
 
 Set-Location -Path "C:\Users\ENG\Downloads"
 
-$PC = $env:COMPUTERNAME
-New-PSDrive -Name "O" -PSProvider FileSystem -Root "\\$PC\OT" -Persist 
+#$PC = $env:COMPUTERNAME
+#New-PSDrive -Name "O" -PSProvider FileSystem -Root "\\$PC\OT" -Persist 
 
 $Connect = Test-Connection 'www.google.com' -Quiet
 if($Connect = $true){
