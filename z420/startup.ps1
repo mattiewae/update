@@ -15,15 +15,7 @@ Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Too
 Set-Location -Path "C:\Users\ENG\Downloads"
 
 $PC = $env:COMPUTERNAME
-$test = Test-Path "O:\"
-
-if($test = $false){
-   
-   New-PSDrive -Name "O" -PSProvider FileSystem -Root "\\$PC\OT" -Persist 
-}
-else{
-    #Share is OK
-}
+New-PSDrive -Name "O" -PSProvider FileSystem -Root "\\$PC\OT" -Persist 
 
 $Connect = Test-Connection 'www.google.com' -Quiet
 if($Connect = $true){
