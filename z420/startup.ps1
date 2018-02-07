@@ -14,14 +14,16 @@ Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Too
 
 Set-Location -Path "C:\Users\ENG\Downloads"
 
-#wget https://github.com/mattiewae/update/blob/master/z420/faspex.zip?raw=true -OutFile .\faspex.zip
-#Expand-Archive .\faspex.zip 
-#Move-Item .\faspex\faspex.website $home\Desktop -Force
+$PC = $env:COMPUTERNAME
+$test = Test-Path "O:\"
 
-#Remove-Item .\faspex.zip -force
-#Remove-Item .\faspex -Recurse
-#Remove-Item "$home\Desktop\Aspera Faspex.website"
-#Remove-Item "$home\Desktop\Aspera Faspex.URL"
+if($test = $false){
+   
+   New-PSDrive -Name "O" -PSProvider FileSystem -Root "\\$PC\OT" -Persist 
+}
+else{
+    #Share is OK
+}
 
 $Connect = Test-Connection 'www.google.com' -Quiet
 if($Connect = $true){
