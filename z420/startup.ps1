@@ -12,16 +12,16 @@ function Log-Message
 
 Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
 
-Set-Location -Path "C:\Users\ENG\Downloads"
-
 $encoder = Test-Path C:\encoder\encoderV30.exe
-if($encoder = $false){
+
+if($encoder -eq $true){
+ 
+    # encoder uptodate
+}
+else{
     Set-Location C:\Users\ENG\Downloads
     wget https://github.com/mattiewae/update/blob/master/z420/Encoder_V30.exe?raw=true -Outfile encoderV30.exe
     Move-item encoderV30.exe C:\encoder\ 
-}
-else{
-  # encoder uptodate
 }
 
 #$PC = $env:COMPUTERNAME
