@@ -29,8 +29,9 @@ else{
 
 
 $Connect = Test-Connection 'www.google.com' -Quiet
-if($Connect = $true){
-
+if($Connect -eq $true){
+    Install-Package -Name nuget -force
+    Install-Module -Name Posh-SSH
     cinst wget -y
     cinst flashplayerplugin -y
     cinst flashplayeractivex -y
