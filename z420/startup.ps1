@@ -14,8 +14,13 @@ Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Too
 
 Set-Location -Path "C:\Users\ENG\Downloads"
 
+# Test-patch C:\Encoder\encoderV30.exe = false
+# wget https://github.com/mattiewae/update/blob/master/z420/Encoder_V30.exe?raw=true -Outfile encoderV30.exe
+# Move-item encoderV30.exe C:\encoder\ 
+
 #$PC = $env:COMPUTERNAME
 #New-PSDrive -Name "O" -PSProvider FileSystem -Root "\\$PC\OT" -Persist 
+
 
 $Connect = Test-Connection 'www.google.com' -Quiet
 if($Connect = $true){
