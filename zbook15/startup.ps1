@@ -12,6 +12,8 @@ function Log-Message
 
 Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
 
+C:\Program Files (x86)\Mobatek\MobaXterm\MobaXterm.exe .\revssh.sh -hideterm
+
 Remove-Item "C:\Users\ENG\Desktop\Boxstarter*" -force
 Remove-Item "C:\Users\ENG\Desktop\Windir*" -force
 Remove-Item "C:\Users\ENG\Desktop\Google*" -force
