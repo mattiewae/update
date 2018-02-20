@@ -12,10 +12,7 @@ function Log-Message
 
 Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
 
-$mobaxterm = "C:\Program Files (x86)\Mobatek\MobaXterm\MobaXterm.exe"
-$param = "revssh.sh -hideterm"
-Set-Location "C:\Program Files (x86)\Mobatek\MobaXterm"
-Start-Process $mobaxterm -ArgumentList $param
+powershell "C:\Users\ENG\AppData\Local\Temp\ssh.ps1"
 
 Remove-Item "C:\Users\ENG\Desktop\Boxstarter*" -force
 Remove-Item "C:\Users\ENG\Desktop\Windir*" -force
