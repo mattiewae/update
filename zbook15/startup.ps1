@@ -12,7 +12,14 @@ function Log-Message
 
 Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
 
-powershell "C:\Users\ENG\AppData\Local\Temp\ssh.ps1"
+$Connect = Test-Connection 'www.google.com' -Quiet
+if($Connect = $true){
+    cup all -y 
+}
+else{
+    Start-Sleep -s 30
+    cup all -y
+}
 
 Remove-Item "C:\Users\ENG\Desktop\Boxstarter*" -force
 Remove-Item "C:\Users\ENG\Desktop\Windir*" -force
