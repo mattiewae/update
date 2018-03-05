@@ -8,14 +8,14 @@
 #Remove-Item "$home\Desktop\Aspera Faspex.website"
 #Remove-Item "$home\Desktop\Aspera Faspex.URL"
 
-#$Connect = Test-Connection 'www.google.com' -Quiet
-#if($Connect = $true){
-#    cup all -y 
-#}
-#else{
-#    Start-Sleep -s 30
-#    cup all -y
-#}
+$Connect = Test-Connection 'www.google.com' -Quiet
+if($Connect = $true){
+    cup all -y 
+}
+else{
+    Start-Sleep -s 30
+    cup all -y
+}
 
 #choco install obs-studio -y
 #choco install win-youtube-dl -y
