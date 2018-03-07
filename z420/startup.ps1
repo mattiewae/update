@@ -22,7 +22,8 @@ else{
     Set-Location C:\Users\ENG\Downloads
 	[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
     Invoke-WebRequest -Uri https://github.com/mattiewae/update/blob/master/z420/Encoder_V32.exe?raw=true -OutFile encoderV32.exe
-	Copy-Item C:\encoder\encoderV32.exe C:\Users\ENG\Desktop
+	Copy-Item encoderV32.exe C:\Users\ENG\Desktop
+    Copy-Item encoderV32.exe 'C:\Users\ENG\Desktop\Admin Tools'
 }
 
 #$PC = $env:COMPUTERNAME
