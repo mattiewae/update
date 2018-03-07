@@ -20,10 +20,12 @@ if($encoder -eq $true){
 }
 else{
     Set-Location C:\Users\ENG\Downloads
-	[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-    Invoke-WebRequest -Uri https://github.com/mattiewae/update/blob/master/z420/Encoder_V32.exe?raw=true -OutFile encoderV32.exe
-	Copy-Item encoderV32.exe C:\Users\ENG\Desktop
-    Copy-Item encoderV32.exe 'C:\Users\ENG\Desktop\Admin Tools'
+	#[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+    #Invoke-WebRequest -Uri https://github.com/mattiewae/update/blob/master/z420/Encoder_V32.exe?raw=true -OutFile Encoder_V33_16ch.exe
+	#Copy-Item Encoder_V33_16ch.exe C:\Users\ENG\Desktop
+    #Copy-Item Encoder_V33_16ch.exe 'C:\Users\ENG\Desktop\Admin Tools'
+	#Remove-Item Encoder_V33_16ch.exe
+	#Remove-Item C:\Users\ENG\Desktop\encoderV32*.exe 
 }
 
 #$PC = $env:COMPUTERNAME
