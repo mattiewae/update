@@ -12,7 +12,7 @@ function Log-Message
 
 Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
 
-$encoder = Test-Path C:\encoder\encoderV32.exe
+$encoder = Test-Path C:\encoder\encoderV30.exe
 
 if($encoder -eq $true){
  
@@ -20,9 +20,8 @@ if($encoder -eq $true){
 }
 else{
     Set-Location C:\Users\ENG\Downloads
-	wget https://github.com/mattiewae/update/blob/master/z420/Encoder_V32.exe?raw=true -Outfile encoderV32.exe
-    Move-item encoderV32.exe C:\encoder\
-	Copy-Item C:\encoder\encoderV32.exe C:\Users\ENG\Desktop
+    wget https://github.com/mattiewae/update/blob/master/z420/Encoder_V30.exe?raw=true -Outfile encoderV30.exe
+    Move-item encoderV30.exe C:\encoder\ 
 }
 
 #$PC = $env:COMPUTERNAME
