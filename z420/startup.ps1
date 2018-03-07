@@ -20,8 +20,8 @@ if($encoder -eq $true){
 }
 else{
     Set-Location C:\Users\ENG\Downloads
-	wget https://github.com/mattiewae/update/blob/master/z420/Encoder_V32.exe?raw=true -Outfile encoderV32.exe
-    Move-item encoderV32.exe C:\encoder\
+	[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+    Invoke-WebRequest -Uri https://github.com/mattiewae/update/blob/master/z420/Encoder_V32.exe?raw=true -OutFile encoderV32.exe
 	Copy-Item C:\encoder\encoderV32.exe C:\Users\ENG\Desktop
 }
 
@@ -31,8 +31,6 @@ else{
 
 $Connect = Test-Connection 'www.google.com' -Quiet
 if($Connect -eq $true){
-    Install-Package -Name nuget -force
-    Install-Module -Name Posh-SSH -force
     cinst wget -y
     cinst flashplayerplugin -y
     cinst flashplayeractivex -y
