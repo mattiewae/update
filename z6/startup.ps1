@@ -39,11 +39,13 @@ else{
     cup all -y
 }
 
+Log-Message "Apps Update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
 
 Remove-Item "C:\Users\ENG\Desktop\Boxstarter*" -force
-Remove-Item "C:\Users\Public\Desktop\Avidemux*" -force
 Remove-Item "C:\Users\ENG\Desktop\Mozilla*" -force
 Remove-Item "C:\Users\ENG\Desktop\Boxstarter*" -force
+Remove-Item "C:\Users\ENG\Desktop\Win*" -force
+
 Remove-Item "C:\Users\Public\Desktop\Libre*" -force
 Remove-Item "C:\Users\Public\Desktop\Chrome*" -force
 Remove-Item "C:\Users\Public\Desktop\Google*" -force
@@ -55,8 +57,13 @@ Remove-Item "C:\Users\Public\Desktop\Firefox*"
 Remove-Item "C:\Users\Public\Desktop\Google*"
 Remove-Item "C:\Users\Public\Desktop\Boxstarter*" -force
 Remove-Item "C:\Users\Public\Desktop\Quick*" -force
+Remove-Item "C:\Users\Public\Desktop\Avidemux*" -force
+
+Log-Message "Remove Dekstop Items" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
 
 Install-WindowsUpdate -acceptEula -SuppressReboots -criteria "BrowseOnly=0 and IsAssigned=1 and IsHidden=0 and IsInstalled=0 and Type='Software'"
+
+Log-Message "Windows Updates" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
 
 Log-Message "Update Completed" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
 
