@@ -53,6 +53,8 @@ Remove-Item "C:\Users\Public\Desktop\OBS*" -force
 Remove-Item "C:\Users\Public\Desktop\Mozilla*" -force
 Remove-Item "C:\Users\Public\Desktop\Firefox*"
 Remove-Item "C:\Users\Public\Desktop\Google*"
+Remove-Item "C:\Users\Public\Desktop\Boxstarter*" -force
+Remove-Item "C:\Users\Public\Desktop\Quick*" -force
 
 Install-WindowsUpdate -acceptEula -SuppressReboots -criteria "BrowseOnly=0 and IsAssigned=1 and IsHidden=0 and IsInstalled=0 and Type='Software'"
 
