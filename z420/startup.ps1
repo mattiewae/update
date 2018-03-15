@@ -12,6 +12,8 @@ function Log-Message
 
 Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
 
+Remove-Item C:\Users\ENG\Desktop\encoderV2*
+
 $encoder = Test-Path C:\encoder\encoder_V33_16CH.exe
 
 if($encoder -eq $true){
@@ -19,11 +21,11 @@ if($encoder -eq $true){
     # encoder uptodate
 }
 else{
-    Set-Location C:\Users\ENG\Downloads
+    	Set-Location C:\Users\ENG\Downloads
 	[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-    Invoke-WebRequest -Uri https://github.com/mattiewae/update/blob/master/z420/Encoder_V33_16ch.exe?raw=true -OutFile Encoder_V33_16ch.exe
+    	Invoke-WebRequest -Uri https://github.com/mattiewae/update/blob/master/z420/Encoder_V33_16ch.exe?raw=true -OutFile Encoder_V33_16ch.exe
 	Copy-Item Encoder_V33_16ch.exe C:\Users\ENG\Desktop
-    Copy-Item Encoder_V33_16ch.exe 'C:\Users\ENG\Desktop\Admin Tools'
+    	Copy-Item Encoder_V33_16ch.exe 'C:\Users\ENG\Desktop\Admin Tools'
 	Copy-Item Encoder_V33_16ch.exe 'C:\encoder\'
 	Remove-Item Encoder_V33_16ch.exe
 	Remove-Item C:\Users\ENG\Desktop\encoderV32*.exe 
