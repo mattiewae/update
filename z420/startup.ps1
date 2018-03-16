@@ -12,7 +12,7 @@ function Log-Message
 
 Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
 
-Remove-Item C:\Users\ENG\Desktop\encoderV2*
+Remove-Item C:\Users\ENG\Desktop\encoder_V2*
 
 $encoder = Test-Path C:\encoder\encoder_V33_16CH.exe
 
