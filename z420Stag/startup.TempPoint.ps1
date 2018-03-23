@@ -12,9 +12,7 @@ function Log-Message
 
 Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
 
-Remove-Item C:\Users\ENG\Desktop\encoder_V2*
-
-$encoder = Test-Path C:\encoder\encoder_V33_16CH.exe
+$encoder = Test-Path C:\encoder\encoderV30.exe
 
 if($encoder -eq $true){
  
@@ -22,13 +20,8 @@ if($encoder -eq $true){
 }
 else{
     Set-Location C:\Users\ENG\Downloads
-	[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-    Invoke-WebRequest -Uri https://github.com/mattiewae/update/blob/master/z420/Encoder_V33_16ch.exe?raw=true -OutFile Encoder_V33_16ch.exe
-	Copy-Item Encoder_V33_16ch.exe C:\Users\ENG\Desktop
-    Copy-Item Encoder_V33_16ch.exe 'C:\Users\ENG\Desktop\Admin Tools'
-	Copy-Item Encoder_V33_16ch.exe 'C:\encoder\'
-	Remove-Item Encoder_V33_16ch.exe
-	Remove-Item C:\Users\ENG\Desktop\encoderV32*.exe 
+    wget https://github.com/mattiewae/update/blob/master/z420/Encoder_V30.exe?raw=true -Outfile encoderV30.exe
+    Move-item encoderV30.exe C:\encoder\ 
 }
 
 #$PC = $env:COMPUTERNAME
@@ -37,6 +30,8 @@ else{
 
 $Connect = Test-Connection 'www.google.com' -Quiet
 if($Connect -eq $true){
+    Install-Package -Name nuget -force
+    Install-Module -Name Posh-SSH -force
     cinst wget -y
     cinst flashplayerplugin -y
     cinst flashplayeractivex -y
