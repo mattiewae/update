@@ -31,9 +31,27 @@ else{
 	Remove-Item C:\Users\ENG\Desktop\encoderV32*.exe 
 }
 
-#$PC = $env:COMPUTERNAME
-#New-PSDrive -Name "O" -PSProvider FileSystem -Root "\\$PC\OT" -Persist 
+function Presets{
+    Set-Location $env:TEMP
 
+        $montage = Test-Path "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Custom\MONTAGE.sqpreset"
+        $ruw = Test-Path "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Custom\RUW.sqpreset"
+
+            if($montage -and $ruw -eq $true){
+            #do nothing
+            Write-Host 'presets OK'
+            }
+            else{
+                Set-Location $env:TEMP
+	            [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+                Invoke-WebRequest -Uri https://raw.githubusercontent.com/mattiewae/update/master/z420Stag/Presets/Custom/MONTAGE.sqpreset -OutFile MONTAGE.sqpreset
+                Invoke-WebRequest -Uri https://raw.githubusercontent.com/mattiewae/update/master/z420Stag/Presets/Custom/RUW.sqpreset  -OutFile RUW.sqpreset
+                New-Item -ItemType Directory "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Custom"
+                Move-Item *.sqpreset "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Custom"
+            }
+}
+
+Presets
 
 $Connect = Test-Connection 'www.google.com' -Quiet
 if($Connect -eq $true){
