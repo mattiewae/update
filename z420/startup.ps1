@@ -53,6 +53,14 @@ function Presets{
 
 Presets
 
+function DeleteItems{
+    $limit = (Get-Date).AddDays(-10)
+    $path = 'E:\AdobeExport'
+    Get-ChildItem -Path $path -Recurse -Force | Where-Object { !$_.PSIsContainer -and $_.CreationTime -lt $limit } | Remove-Item -Force
+}
+
+DeleteItems
+
 $Connect = Test-Connection 'www.google.com' -Quiet
 if($Connect -eq $true){
     cinst wget -y
