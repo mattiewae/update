@@ -16,6 +16,21 @@ Remove-Item C:\Users\ENG\Desktop\encoder_V2*
 
 $encoder = Test-Path C:\encoder\encoder_V33_16CH.exe
 
+function ReplaceLaadSettings{
+    Set-Location $env:TEMP
+    
+    $LaadSettings = Test-Path $env:TEMP\LaadSettings.ps1
+    if($LaadSettings -eq $true){
+        Move-Item $env:TEMP\LaadSettings.ps1 'C:\Users\ENG\Desktop\Admin Tools\Scripts\LaadSettings.ps1' -Force 
+        Write-Host 'Script replaced'
+    }
+    else{
+        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+        Invoke-WebRequest -Uri https://raw.githubusercontent.com/mattiewae/update/master/AdobePresets/laadSettings.ps1 -OutFile LaadSettings.ps1
+        Write-Host 'Settings downloaded'
+    }
+}
+
 function UpdateEncoder{
     if($encoder -eq $true){
  
@@ -98,11 +113,13 @@ function Remove-DesktopItems{
     Remove-Item "C:\Users\Public\Desktop\Google*"
 }
 
+Presets
+
+ReplaceLaadSettings
+
 UpdateEncoder
 
 UpdateApps
-
-Presets
 
 Remove-DesktopItems
 
