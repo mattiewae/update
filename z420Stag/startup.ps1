@@ -19,8 +19,9 @@ $encoder = Test-Path C:\encoder\encoder_V33_16CH.exe
 function ReplaceLaadSettings{
     Set-Location $env:TEMP
     
+    $montage = Test-Path "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Custom\MONTAGE.sqpreset"
     $LaadSettings = Test-Path $env:TEMP\LaadSettings.ps1
-    if($LaadSettings -eq $true){
+    if($LaadSettings -and $montage -eq $true){
         Move-Item $env:TEMP\LaadSettings.ps1 'C:\Users\ENG\Desktop\Admin Tools\Scripts\LaadSettings.ps1' -Force 
         Write-Host 'Script replaced'
     }
@@ -109,8 +110,8 @@ function Remove-DesktopItems{
     Remove-Item "C:\Users\Public\Desktop\VLC*" -force
     Remove-Item "C:\Users\Public\Desktop\OBS*" -force
     Remove-Item "C:\Users\Public\Desktop\Mozilla*" -force
-    Remove-Item "C:\Users\Public\Desktop\Firefox*"
-    Remove-Item "C:\Users\Public\Desktop\Google*"
+    Remove-Item "C:\Users\Public\Desktop\Firefox*" -force
+    Remove-Item "C:\Users\Public\Desktop\Google*" -force
 }
 
 Presets
