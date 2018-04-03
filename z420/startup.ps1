@@ -16,6 +16,22 @@ Remove-Item C:\Users\ENG\Desktop\encoder_V2*
 
 $encoder = Test-Path C:\encoder\encoder_V33_16CH.exe
 
+function DHD{
+    Set-Location $env:TEMP
+
+    $DHD = Test-Path "C:\Users\ENG\Desktop\Allerlei nuttige dingen\DHD_config_instellingen1.pdf"
+
+    if($DHD -eq $true){
+       Write-Host "DHD uitleg: OK"
+    }
+    else{
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+    Invoke-WebRequest -Uri https://github.com/mattiewae/update/raw/master/z420/DHD_config_instellingen.pdf -OutFile "DHD_config_instellingen1.pdf"
+    Move-Item "DHD_config_instellingen1.pdf" "C:\Users\ENG\Desktop\Allerlei nuttige dingen"
+    }
+
+}
+
 function ReplaceLaadSettings{
     Set-Location $env:TEMP
     
@@ -113,6 +129,8 @@ function Remove-DesktopItems{
     Remove-Item "C:\Users\Public\Desktop\Firefox*" -force
     Remove-Item "C:\Users\Public\Desktop\Google*" -force
 }
+
+DHD
 
 Presets
 
