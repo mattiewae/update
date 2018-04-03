@@ -1,3 +1,5 @@
+#Z420 STAGING
+
 function Log-Message
 {
     [CmdletBinding()]
@@ -15,6 +17,22 @@ Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Too
 Remove-Item C:\Users\ENG\Desktop\encoder_V2*
 
 $encoder = Test-Path C:\encoder\encoder_V33_16CH.exe
+
+function DHD{
+    Set-Location $env:TEMP
+
+    $DHD = Test-Path "C:\Users\ENG\Desktop\Allerlei nuttige dingen\DHD_config_instellingen1.pdf"
+
+    if($DHD -eq $true){
+       Write-Host "DHD uitleg: OK"
+    }
+    else{
+    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+    Invoke-WebRequest -Uri https://github.com/mattiewae/update/raw/master/z420/DHD_config_instellingen.pdf -OutFile "DHD_config_instellingen1.pdf"
+    Move-Item "DHD_config_instellingen1.pdf" "C:\Users\ENG\Desktop\Allerlei nuttige dingen"
+    }
+
+}
 
 function ReplaceLaadSettings{
     Set-Location $env:TEMP
@@ -114,16 +132,18 @@ function Remove-DesktopItems{
     Remove-Item "C:\Users\Public\Desktop\Google*" -force
 }
 
-Presets
+DHD
 
-ReplaceLaadSettings
+#Presets
 
-UpdateEncoder
+#ReplaceLaadSettings
 
-UpdateApps
+#UpdateEncoder
 
-Remove-DesktopItems
+#UpdateApps
 
-Install-WindowsUpdate -acceptEula -SuppressReboots -criteria "BrowseOnly=0 and IsAssigned=1 and IsHidden=0 and IsInstalled=0 and Type='Software'"
+#Remove-DesktopItems
+
+#Install-WindowsUpdate -acceptEula -SuppressReboots -criteria "BrowseOnly=0 and IsAssigned=1 and IsHidden=0 and IsInstalled=0 and Type='Software'"
 
 Log-Message "Update Completed" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
