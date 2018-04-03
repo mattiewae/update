@@ -86,6 +86,26 @@ function Presets{
             }
 }
 
+function PresetsMediaEncoder{
+    Set-Location $env:TEMP
+
+        $zloudness = Test-Path "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Media Encoder Presets\Faspex zonder loudness.epr"
+        $loudness = Test-Path "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Media Encoder Presets\Faspex met loudness.epr"
+
+            if($loudness -and $zloudness -eq $true){
+            #do nothing
+            Write-Host 'presets OK'
+            }
+            else{
+                Set-Location $env:TEMP
+	            [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+                Invoke-WebRequest -Uri https://raw.githubusercontent.com/mattiewae/update/master/z420Stag/Presets/FASPEX%20met%20loudness.epr -OutFile "Faspex met loudness.epr"
+                Invoke-WebRequest -Uri https://raw.githubusercontent.com/mattiewae/update/master/z420Stag/Presets/FASPEX%20zonder%20loudness.epr  -OutFile "Faspex zonder loudness.epr"
+                New-Item -ItemType Directory "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Media Encoder Presets\"
+                Move-Item *.epr "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Media Encoder Presets\"
+            }
+}
+
 function UpdateApps{
     $Connect = Test-Connection 'www.google.com' -Quiet
          if($Connect -eq $true){
@@ -129,6 +149,8 @@ function Remove-DesktopItems{
     Remove-Item "C:\Users\Public\Desktop\Firefox*" -force
     Remove-Item "C:\Users\Public\Desktop\Google*" -force
 }
+
+PresetsMediaEncoder
 
 DHD
 
