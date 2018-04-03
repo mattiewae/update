@@ -1,5 +1,3 @@
-#Z420 STAGING
-
 function Log-Message
 {
     [CmdletBinding()]
