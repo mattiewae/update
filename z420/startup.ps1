@@ -75,6 +75,8 @@ function Presets{
             if($montage -and $ruw -eq $true){
             #do nothing
             Write-Host 'presets OK'
+            New-Item -ItemType Directory "C:\Users\ENG\Desktop\Allerlei nuttige dingen\Premiere Sequence Settings"
+            Copy-Item "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Custom\*" -Recurse -Destination 'C:\Users\ENG\Desktop\Allerlei nuttige dingen\Premiere Sequence Settings' -Force
             }
             else{
                 Set-Location $env:TEMP
@@ -83,6 +85,26 @@ function Presets{
                 Invoke-WebRequest -Uri https://raw.githubusercontent.com/mattiewae/update/master/z420Stag/Presets/Custom/RUW.sqpreset  -OutFile RUW.sqpreset
                 New-Item -ItemType Directory "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Custom"
                 Move-Item *.sqpreset "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Custom"
+            }
+}
+
+function PresetsMediaEncoder{
+    Set-Location $env:TEMP
+
+        $zloudness = Test-Path "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Media Encoder Presets\Faspex zonder loudness.epr"
+        $loudness = Test-Path "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Media Encoder Presets\Faspex met loudness.epr"
+
+            if($loudness -and $zloudness -eq $true){
+            #do nothing
+            Copy-Item "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Media Encoder Presets\" -Recurse -Destination "C:\Users\ENG\Desktop\Allerlei nuttige dingen\"
+            }
+            else{
+                Set-Location $env:TEMP
+	            [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+                Invoke-WebRequest -Uri https://raw.githubusercontent.com/mattiewae/update/master/z420Stag/Presets/FASPEX%20met%20loudness.epr -OutFile "Faspex met loudness.epr"
+                Invoke-WebRequest -Uri https://raw.githubusercontent.com/mattiewae/update/master/z420Stag/Presets/FASPEX%20zonder%20loudness.epr  -OutFile "Faspex zonder loudness.epr"
+                New-Item -ItemType Directory "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Media Encoder Presets\"
+                Move-Item *.epr "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Media Encoder Presets\"
             }
 }
 
@@ -129,6 +151,8 @@ function Remove-DesktopItems{
     Remove-Item "C:\Users\Public\Desktop\Firefox*" -force
     Remove-Item "C:\Users\Public\Desktop\Google*" -force
 }
+
+PresetsMediaEncoder
 
 DHD
 
