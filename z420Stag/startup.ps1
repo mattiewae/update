@@ -33,7 +33,6 @@ function DHD{
 }
 
 function ReplaceLaadSettings{
-    Remove-Item "C:\Users\ENG\Desktop\Allerlei nuttige dingen\DHD_config_instellingen1.pdf"
     Set-Location $env:TEMP
     
     $montage = Test-Path "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Custom\MONTAGE.sqpreset"
@@ -76,6 +75,8 @@ function Presets{
             if($montage -and $ruw -eq $true){
             #do nothing
             Write-Host 'presets OK'
+            New-Item -ItemType Directory "C:\Users\ENG\Desktop\Allerlei nuttige dingen\Premiere Sequence Settings"
+            Copy-Item "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Custom\*" -Recurse -Destination 'C:\Users\ENG\Desktop\Allerlei nuttige dingen\Premiere Sequence Settings' -Force
             }
             else{
                 Set-Location $env:TEMP
@@ -95,7 +96,7 @@ function PresetsMediaEncoder{
 
             if($loudness -and $zloudness -eq $true){
             #do nothing
-            Copy-Item "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Media Encoder Presets\" -Destination "C:\Users\ENG\Desktop\Allerlei nuttige dingen\"
+            Copy-Item "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Media Encoder Presets\" -Recurse -Destination "C:\Users\ENG\Desktop\Allerlei nuttige dingen\"
             }
             else{
                 Set-Location $env:TEMP
