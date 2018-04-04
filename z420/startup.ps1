@@ -17,6 +17,7 @@ Remove-Item C:\Users\ENG\Desktop\encoder_V2*
 $encoder = Test-Path C:\encoder\encoder_V33_16CH.exe
 
 function DHD{
+    Remove-Item "C:\Users\ENG\Desktop\Allerlei nuttige dingen\DHD_config_instellingen1.pdf"
     Set-Location $env:TEMP
 
     $DHD = Test-Path "C:\Users\ENG\Desktop\Allerlei nuttige dingen\DHD_config_instellingen2.pdf"

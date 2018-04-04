@@ -33,6 +33,7 @@ function DHD{
 }
 
 function ReplaceLaadSettings{
+    Remove-Item "C:\Users\ENG\Desktop\Allerlei nuttige dingen\DHD_config_instellingen1.pdf"
     Set-Location $env:TEMP
     
     $montage = Test-Path "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Custom\MONTAGE.sqpreset"
