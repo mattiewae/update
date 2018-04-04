@@ -17,6 +17,7 @@ Remove-Item C:\Users\ENG\Desktop\encoder_V2*
 $encoder = Test-Path C:\encoder\encoder_V33_16CH.exe
 
 function DHD{
+    Remove-Item "C:\Users\ENG\Desktop\Allerlei nuttige dingen\DHD_config_instellingen1.pdf"
     Set-Location $env:TEMP
 
     $DHD = Test-Path "C:\Users\ENG\Desktop\Allerlei nuttige dingen\DHD_config_instellingen2.pdf"
@@ -26,10 +27,9 @@ function DHD{
     }
     else{
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-    Invoke-WebRequest -Uri https://github.com/mattiewae/update/raw/master/z420/DHD_config_instellingen.pdf -OutFile "DHD_config_instellingen2.pdf"
+    Invoke-WebRequest -Uri https://github.com/mattiewae/update/raw/master/z420Stag/DHD_config_instellingen2.pdf -OutFile "DHD_config_instellingen2.pdf"
     Move-Item "DHD_config_instellingen2.pdf" "C:\Users\ENG\Desktop\Allerlei nuttige dingen"
     }
-
 }
 
 function ReplaceLaadSettings{
