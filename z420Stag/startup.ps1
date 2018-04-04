@@ -95,7 +95,7 @@ function PresetsMediaEncoder{
 
             if($loudness -and $zloudness -eq $true){
             #do nothing
-            Write-Host 'presets OK'
+            Copy-Item "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Media Encoder Presets\" -Destination "C:\Users\ENG\Desktop\Allerlei nuttige dingen\"
             }
             else{
                 Set-Location $env:TEMP
