@@ -19,15 +19,15 @@ $encoder = Test-Path C:\encoder\encoder_V33_16CH.exe
 function DHD{
     Set-Location $env:TEMP
 
-    $DHD = Test-Path "C:\Users\ENG\Desktop\Allerlei nuttige dingen\DHD_config_instellingen1.pdf"
+    $DHD = Test-Path "C:\Users\ENG\Desktop\Allerlei nuttige dingen\DHD_config_instellingen2.pdf"
 
     if($DHD -eq $true){
        Write-Host "DHD uitleg: OK"
     }
     else{
     [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-    Invoke-WebRequest -Uri https://github.com/mattiewae/update/raw/master/z420/DHD_config_instellingen.pdf -OutFile "DHD_config_instellingen1.pdf"
-    Move-Item "DHD_config_instellingen1.pdf" "C:\Users\ENG\Desktop\Allerlei nuttige dingen"
+    Invoke-WebRequest -Uri https://github.com/mattiewae/update/raw/master/z420/DHD_config_instellingen.pdf -OutFile "DHD_config_instellingen2.pdf"
+    Move-Item "DHD_config_instellingen2.pdf" "C:\Users\ENG\Desktop\Allerlei nuttige dingen"
     }
 
 }
