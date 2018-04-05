@@ -108,6 +108,8 @@ function PresetsMediaEncoder{
                 Invoke-WebRequest -Uri https://raw.githubusercontent.com/mattiewae/update/master/z420Stag/Presets/FASPEX%20zonder%20loudness.epr  -OutFile "Faspex zonder loudness.epr"
                 New-Item -ItemType Directory "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Media Encoder Presets\"
                 Move-Item *.epr "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Media Encoder Presets\"
+                Copy-Item "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Media Encoder Presets\Faspex zonder loudness.epr" -Destination "C:\Users\ENG\Documents\Adobe\Adobe Media Encoder\11.0\Presets" -Force
+                Copy-Item "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Media Encoder Presets\Faspex met loudness.epr" -Destination "C:\Users\ENG\Documents\Adobe\Adobe Media Encoder\11.0\Presets" -Force
             }
 }
 
