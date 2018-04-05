@@ -96,8 +96,10 @@ function PresetsMediaEncoder{
         $loudness = Test-Path "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Media Encoder Presets\Faspex met loudness.epr"
 
             if($loudness -and $zloudness -eq $true){
-            #do nothing
+            Remove-Item "C:\Users\ENG\Documents\Adobe\Adobe Media Encoder\11.0\Presets\*" -Force
             Copy-Item "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Media Encoder Presets\" -Recurse -Destination "C:\Users\ENG\Desktop\Allerlei nuttige dingen\"
+            Copy-Item $loudness -Destination "C:\Users\ENG\Documents\Adobe\Adobe Media Encoder\11.0\Presets" -Force
+            Copy-Item $zloudness -Destination "C:\Users\ENG\Documents\Adobe\Adobe Media Encoder\11.0\Presets" -Force
             }
             else{
                 Set-Location $env:TEMP
