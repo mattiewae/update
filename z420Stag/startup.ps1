@@ -79,6 +79,7 @@ function Presets{
             Copy-Item "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Custom\*" -Recurse -Destination 'C:\Users\ENG\Desktop\Allerlei nuttige dingen\Premiere Sequence Settings' -Force
             }
             else{
+                New-Item -ItemType Directory "C:\Users\ENG\Desktop\Allerlei nuttige dingen\Premiere Sequence Settings" -Force
                 Set-Location $env:TEMP
 	            [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
                 Invoke-WebRequest -Uri https://raw.githubusercontent.com/mattiewae/update/master/z420Stag/Presets/Custom/MONTAGE.sqpreset -OutFile MONTAGE.sqpreset
