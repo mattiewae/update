@@ -162,6 +162,23 @@ function ClearAdobeExport{
 		Get-ChildItem -Path $path -Recurse -Force | Where-Object { $_.PSIsContainer -and (Get-ChildItem -Path $_.FullName -Recurse -Force | Where-Object { !$_.PSIsContainer }) -eq $null } | Remove-Item -Force -Recurse
 }
 
+function BasisProject{
+    Set-Location $env:TEMP
+	            
+    $basisProject = Test-Path "$env:TEMP\BasisProject.prproj"
+
+    if($basisProject -eq $true){
+        Copy-Item BasisProject.prproj -Destination "C:\Users\ENG\Desktop\Admin Tools\Scripts" -Force
+    }
+    else{
+        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+        Invoke-WebRequest -Uri https://github.com/mattiewae/update/raw/master/z420Stag/BasisProject.prproj -OutFile BasisProject.prproj
+    }
+    
+}
+
+BasisProject
+
 ClearAdobeExport
 
 PresetsMediaEncoder
