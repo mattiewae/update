@@ -38,7 +38,7 @@ function ReplaceLaadSettings{
     $montage = Test-Path "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Custom\MONTAGE.sqpreset"
     $LaadSettings = Test-Path $env:TEMP\LaadSettings.ps1
     if($LaadSettings -and $montage -eq $true){
-        Move-Item $env:TEMP\LaadSettings.ps1 'C:\Users\ENG\Desktop\Admin Tools\Scripts\LaadSettings.ps1' -Force 
+        Move-Item $env:TEMP\LaadSettings.ps1 "C:\Users\ENG\Desktop\Admin Tools\Scripts\" -Force 
         Write-Host 'Script replaced'
     }
     else{
