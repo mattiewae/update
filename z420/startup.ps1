@@ -34,11 +34,16 @@ function DHD{
 
 function ReplaceLaadSettings{
     Set-Location $env:TEMP
+    	$acl = Get-Acl -Path "C:\Users\ENG\Desktop\Admin Tools\Scripts\BackupSettings.ps1"
+	
+
+
     
     $montage = Test-Path "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Custom\MONTAGE.sqpreset"
     $LaadSettings = Test-Path $env:TEMP\LaadSettings.ps1
     if($LaadSettings -and $montage -eq $true){
         Copy-Item $env:TEMP\LaadSettings.ps1 "C:\Users\ENG\Desktop\Admin Tools\Scripts\" -Force 
+	Set-Acl -Path "C:\Users\ENG\Desktop\Admin Tools\Scripts\LaadSettings.ps1" -AclObject $acl
         Write-Host 'Script replaced'
     }
     else{
