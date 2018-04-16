@@ -166,22 +166,22 @@ function ClearAdobeExport{
 		Get-ChildItem -Path $path -Recurse -Force | Where-Object { $_.PSIsContainer -and (Get-ChildItem -Path $_.FullName -Recurse -Force | Where-Object { !$_.PSIsContainer }) -eq $null } | Remove-Item -Force -Recurse
 }
 
-ClearAdobeExport
 
-PresetsMediaEncoder
+$Connect = Test-Connection 'www.google.com' -Quiet
+if($Connect = $true){
+    	ClearAdobeExport
+	PresetsMediaEncoder
+	DHD
+	Presets
+	ReplaceLaadSettings
+	UpdateEncoder
+	UpdateApps
+	Remove-DesktopItems
+	Install-WindowsUpdate -acceptEula -SuppressReboots -criteria "BrowseOnly=0 and IsAssigned=1 and IsHidden=0 and IsInstalled=0 and Type='Software'"
+}
+else{
+    	Start-Sleep -s 30
+}
 
-DHD
-
-Presets
-
-ReplaceLaadSettings
-
-UpdateEncoder
-
-UpdateApps
-
-Remove-DesktopItems
-
-Install-WindowsUpdate -acceptEula -SuppressReboots -criteria "BrowseOnly=0 and IsAssigned=1 and IsHidden=0 and IsInstalled=0 and Type='Software'"
 
 Log-Message "Update Completed" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
