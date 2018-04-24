@@ -168,7 +168,7 @@ function ClearAdobeExport{
 
 
 $Connect = Test-Connection 'www.google.com' -Quiet
-if($Connect = $true){
+if($Connect -eq $true){
     	ClearAdobeExport
 	PresetsMediaEncoder
 	DHD
