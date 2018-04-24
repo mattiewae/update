@@ -48,7 +48,7 @@ function ReplaceLaadSettings{
     }
     else{
         [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-        Invoke-WebRequest -Uri https://raw.githubusercontent.com/mattiewae/update/master/AdobePresets/laadSettings.ps1 -OutFile LaadSettings.ps1
+        Invoke-WebRequest -Uri https://raw.githubusercontent.com/mattiewae/update/master/AdobePresets/LaadSettins.ps1 -OutFile LaadSettings.ps1
         Write-Host 'Settings downloaded'
     }
 }
