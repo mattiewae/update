@@ -34,7 +34,7 @@ function DHD{
 
 function ReplaceLaadSettings{
     Set-Location $env:TEMP
-    	$acl = Get-Acl -Path "C:\Users\ENG\Desktop\Admin Tools\Scripts\BackupSettings.ps1"
+    	$acl = Get-Acl -Path "C:\Users\ENG\Desktop\Admin Tools\Scripts\Dagproject.ps1"
 	
 
 
