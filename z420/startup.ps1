@@ -36,9 +36,6 @@ function ReplaceLaadSettings{
     Set-Location $env:TEMP
     	$acl = Get-Acl -Path "C:\Users\ENG\Desktop\Admin Tools\Scripts\Dagproject.ps1"
 	
-
-
-    
     $montage = Test-Path "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Custom\MONTAGE.sqpreset"
     $LaadSettings = Test-Path $env:TEMP\LaadSettings.ps1
     if($LaadSettings -and $montage -eq $true){
@@ -50,6 +47,22 @@ function ReplaceLaadSettings{
         [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
         Invoke-WebRequest -Uri https://raw.githubusercontent.com/mattiewae/update/master/AdobePresets/LaadSettins.ps1 -OutFile LaadSettings.ps1
         Write-Host 'Settings downloaded'
+    }
+}
+
+function ReplaceBackupSettings{
+    Set-Location $env:TEMP
+    $acl = Get-Acl -Path "C:\Users\ENG\Desktop\Admin Tools\Scripts\Dagproject.ps1"
+        
+    $BackupSettings = Test-Path C:\Users\ENG\AppData\Local\Temp\BackupSettings.ps1
+    if($BackupSettings -eq $true){
+        Copy-Item C:\Users\ENG\AppData\Local\Temp\BackupSettings.ps1 "C:\Users\ENG\Desktop\Admin Tools\Scripts\" -Force
+        Set-Acl -Path "C:\Users\ENG\Desktop\Admin Tools\Scripts\BackupSettings.ps1" -AclObject $acl
+        Write-Host 'BackupSettings replaced' 
+    }
+    else{
+        wget https://raw.githubusercontent.com/mattiewae/update/master/AdobePresets/BackupSettings.ps1 -OutFile BackupSettings.ps1
+        Write-Host 'BackupSettings downloaded'
     }
 }
 
@@ -182,12 +195,13 @@ function ClearAdobeExport{
 #else{
 #    	Start-Sleep -s 30
 #}
-
+	
 	ClearAdobeExport
 	PresetsMediaEncoder
 	DHD
 	Presets
 	ReplaceLaadSettings
+	ReplaceBackupSettings
 	UpdateEncoder
 	UpdateApps
 	Remove-DesktopItems
