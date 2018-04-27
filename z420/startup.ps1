@@ -179,6 +179,19 @@ function ClearAdobeExport{
 		Get-ChildItem -Path $path -Recurse -Force | Where-Object { $_.PSIsContainer -and (Get-ChildItem -Path $_.FullName -Recurse -Force | Where-Object { !$_.PSIsContainer }) -eq $null } | Remove-Item -Force -Recurse
 }
 
+function SettingsGUI{
+	Set-Location $env:TEMP
+	$SettingsGUI = $env:TEMP\LaadSettingsGUI.exe
+	
+	Test-Path = $SettingsGUI
+	 if($SettingsGUI -eq $false){
+            wget https://github.com/mattiewae/update/blob/master/AdobePresets/LaadSettingsGUI.exe -Outfile LaadSettingsGUI.exe
+            }
+            else{
+                Copy-Item LaadSettingsGUI.exe -Destination C:\Users\ENG\Desktop\ 
+            }
+}
+
 
 #$Connect = Test-Connection 'www.google.com' -Quiet
 #if($Connect -eq $true){
