@@ -181,17 +181,17 @@ function ClearAdobeExport{
 
 function SettingsGUI{
 	Set-Location $env:TEMP
-	$SettingsGUI = $env:TEMP\LaadSettingsGUI.exe
-	
-	Test-Path = $SettingsGUI
+	$SettingsGUI = Test-Path "$env:HOMEPATH\desktop\LaadSettingsGUI.exe"
+    	$SettingsGUI
 	 if($SettingsGUI -eq $false){
-            wget https://github.com/mattiewae/update/blob/master/AdobePresets/LaadSettingsGUI.exe -Outfile LaadSettingsGUI.exe
+            [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+            Invoke-WebRequest -Uri https://github.com/mattiewae/update/blob/master/AdobePresets/LaadSettingsGUI.exe?raw=true -OutFile LaadSettingsGUI.exe
+            Copy-Item LaadSettingsGUI.exe -Destination $env:HOMEPATH\desktop
             }
             else{
-                Copy-Item LaadSettingsGUI.exe -Destination C:\Users\ENG\Desktop\ 
+                # do nothing
             }
 }
-
 
 #$Connect = Test-Connection 'www.google.com' -Quiet
 #if($Connect -eq $true){
@@ -208,7 +208,7 @@ function SettingsGUI{
 #else{
 #    	Start-Sleep -s 30
 #}
-	
+	SettingsGUI
 	ClearAdobeExport
 	PresetsMediaEncoder
 	DHD
