@@ -229,7 +229,7 @@ function ClearAdobeMediaCache{
  }
 
 
-
+	ClearAdobeMediaCache
 	SettingsGUI
 	ClearAdobeExport
 	PresetsMediaEncoder
