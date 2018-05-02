@@ -10,6 +10,8 @@ function Log-Message
     ("{0} - {1}" -f (Get-Date), $LogMessage)
 }
 
+Start-Sleep -s 30
+
 Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
 
 Remove-Item C:\Users\ENG\Desktop\encoder_V2*
@@ -193,21 +195,41 @@ function SettingsGUI{
             }
 }
 
-#$Connect = Test-Connection 'www.google.com' -Quiet
-#if($Connect -eq $true){
-    	#ClearAdobeExport
-	#PresetsMediaEncoder
-	#DHD
-	#Presets
-	#ReplaceLaadSettings
-	#UpdateEncoder
-	#UpdateApps
-	#Remove-DesktopItems
-	#Install-WindowsUpdate -acceptEula -SuppressReboots -criteria "BrowseOnly=0 and IsAssigned=1 and IsHidden=0 and IsInstalled=0 and Type='Software'"
-#}
-#else{
-#    	Start-Sleep -s 30
-#}
+function ClearAdobeMediaCache{
+	$limit = (Get-Date).AddDays(-10)
+	$MediaCache = "E:\media cache database\Media Cache"
+		# Delete files older than the $limit.
+		Get-ChildItem -Path $MediaCache -Recurse -Force | Where-Object { !$_.PSIsContainer -and $_.CreationTime -lt $limit } | Remove-Item -Force
+		# Delete any empty directories left behind after deleting the old files.
+		Get-ChildItem -Path $MediaCache -Recurse -Force | Where-Object { $_.PSIsContainer -and (Get-ChildItem -Path $_.FullName -Recurse -Force | Where-Object { !$_.PSIsContainer }) -eq $null } | Remove-Item -Force -Recurse
+    
+    $CacheFiles = "E:\media cache\Media Cache Files"
+        # Delete files older than the $limit.
+		Get-ChildItem -Path $CacheFiles -Recurse -Force | Where-Object { !$_.PSIsContainer -and $_.CreationTime -lt $limit } | Remove-Item -Force
+		# Delete any empty directories left behind after deleting the old files.
+		Get-ChildItem -Path $CacheFiles -Recurse -Force | Where-Object { $_.PSIsContainer -and (Get-ChildItem -Path $_.FullName -Recurse -Force | Where-Object { !$_.PSIsContainer }) -eq $null } | Remove-Item -Force -Recurse
+
+    $PeakFiles = "E:\media cache\Peak Files"
+        # Delete files older than the $limit.
+		Get-ChildItem -Path $PeakFiles -Recurse -Force | Where-Object { !$_.PSIsContainer -and $_.CreationTime -lt $limit } | Remove-Item -Force
+		# Delete any empty directories left behind after deleting the old files.
+		Get-ChildItem -Path $PeakFiles -Recurse -Force | Where-Object { $_.PSIsContainer -and (Get-ChildItem -Path $_.FullName -Recurse -Force | Where-Object { !$_.PSIsContainer }) -eq $null } | Remove-Item -Force -Recurse
+
+    $P2 = "E:\P2"
+        # Delete files older than the $limit.
+		Get-ChildItem -Path $P2 -Recurse -Force | Where-Object { !$_.PSIsContainer -and $_.CreationTime -lt $limit } | Remove-Item -Force
+		# Delete any empty directories left behind after deleting the old files.
+		Get-ChildItem -Path $P2 -Recurse -Force | Where-Object { $_.PSIsContainer -and (Get-ChildItem -Path $_.FullName -Recurse -Force | Where-Object { !$_.PSIsContainer }) -eq $null } | Remove-Item -Force -Recurse
+
+    $AdobeImport = "E:\AdobeImport"
+        # Delete files older than the $limit.
+		Get-ChildItem -Path $AdobeImport -Recurse -Force | Where-Object { !$_.PSIsContainer -and $_.CreationTime -lt $limit } | Remove-Item -Force
+		# Delete any empty directories left behind after deleting the old files.
+		Get-ChildItem -Path $AdobeImport -Recurse -Force | Where-Object { $_.PSIsContainer -and (Get-ChildItem -Path $_.FullName -Recurse -Force | Where-Object { !$_.PSIsContainer }) -eq $null } | Remove-Item -Force -Recurse
+ }
+
+
+
 	SettingsGUI
 	ClearAdobeExport
 	PresetsMediaEncoder
