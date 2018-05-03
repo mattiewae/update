@@ -12,6 +12,23 @@ function Log-Message
 
 Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
 
+function SettingsGUI{
+	Set-Location $env:TEMP
+	$SettingsGUI = Test-Path "$env:HOMEPATH\desktop\LaadSettingsGUI.exe"
+    	$SettingsGUI
+	 if($SettingsGUI -eq $false){
+            [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+            Invoke-WebRequest -Uri https://github.com/mattiewae/update/blob/master/AdobePresets/LaadSettingsGUI.exe?raw=true -OutFile LaadSettingsGUI.exe
+            Copy-Item LaadSettingsGUI.exe -Destination $env:HOMEPATH\desktop
+            }
+            else{
+                # do nothing
+            }
+            Log-Message "SettingsGUI" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
+}
+
+SettingsGUI
+
 $Connect = Test-Connection 'www.google.com' -Quiet
 if($Connect = $true){
     cup all -y 
