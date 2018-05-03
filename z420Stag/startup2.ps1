@@ -10,7 +10,7 @@ function Log-Message
     ("{0} - {1}" -f (Get-Date), $LogMessage)
 }
 
-Start-Sleep -s 30
+#Start-Sleep -s 30
 
 Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
 
@@ -240,17 +240,17 @@ function ClearAdobeMediaCache{
     Log-Message "ClearAdobeMediaCache" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
  }
 
-	ClearAdobeMediaCache
+	#ClearAdobeMediaCache
 	SettingsGUI
-	ClearAdobeExport
-	PresetsMediaEncoder
-	DHD
-	Presets
-	ReplaceLaadSettings
-	ReplaceBackupSettings
-	UpdateEncoder
-	UpdateApps
-	Remove-DesktopItems
-	Install-WindowsUpdate -acceptEula -SuppressReboots -criteria "BrowseOnly=0 and IsAssigned=1 and IsHidden=0 and IsInstalled=0 and Type='Software'"
+	#ClearAdobeExport
+	#PresetsMediaEncoder
+	#DHD
+	#Presets
+	#ReplaceLaadSettings
+	#ReplaceBackupSettings
+	#UpdateEncoder
+	#UpdateApps
+	#Remove-DesktopItems
+	#Install-WindowsUpdate -acceptEula -SuppressReboots -criteria "BrowseOnly=0 and IsAssigned=1 and IsHidden=0 and IsInstalled=0 and Type='Software'"
 
 Log-Message "Update Completed" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
