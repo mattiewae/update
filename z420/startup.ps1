@@ -19,18 +19,32 @@ Remove-Item C:\Users\ENG\Desktop\encoder_V2*
 $encoder = Test-Path C:\encoder\encoder_V33_16CH.exe
 
 function DHD{
-    Remove-Item "C:\Users\ENG\Desktop\Allerlei nuttige dingen\DHD_config_instellingen1.pdf"
     Set-Location $env:TEMP
-
     $DHD = Test-Path "C:\Users\ENG\Desktop\Allerlei nuttige dingen\DHD_config_instellingen2.pdf"
 
     if($DHD -eq $true){
-       Write-Host "DHD uitleg: OK"
+        try{
+            Write-Host "DHD Documentatie OK"
+            Remove-Item "C:\Users\ENG\Desktop\Allerlei nuttige dingen\DHD_config_instellingen1.pdf" -ErrorAction Stop
+            }
+        Catch{
+            $ErrorMessage = $_.Exception.Message
+            $FunctionID    
+            Log-Message $ErrorMessage | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
+            }
     }
     else{
-    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-    Invoke-WebRequest -Uri https://github.com/mattiewae/update/raw/master/z420Stag/DHD_config_instellingen2.pdf -OutFile "DHD_config_instellingen2.pdf"
-    Move-Item "DHD_config_instellingen2.pdf" "C:\Users\ENG\Desktop\Allerlei nuttige dingen"
+        try{
+            [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+            Invoke-WebRequest -Uri https://github.com/mattiewae/update/raw/master/z420Stag/DHD_config_instellingen2.pdf -OutFile "DHD_config_instellingen2.pdf" -ErrorAction Stop
+            Move-Item "DHD_config_instellingen2.pdf" "C:\Users\ENG\Desktop\Allerlei nuttige dingen" -ErrorAction Stop
+        }
+        catch{
+            $ErrorMessage = $_.Exception.Message
+            $FunctionID    
+            Log-Message $ErrorMessage | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
+        }
+    
     }
 }
 
