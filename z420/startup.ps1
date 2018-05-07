@@ -10,8 +10,6 @@ function Log-Message
     ("{0} - {1}" -f (Get-Date), $LogMessage)
 }
 
-Start-Sleep -s 30
-
 Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
 
 Remove-Item C:\Users\ENG\Desktop\encoder_V2*
