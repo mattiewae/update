@@ -183,17 +183,34 @@ function ClearAdobeExport{
 
 function SettingsGUI{
 	Set-Location $env:TEMP
-	$SettingsGUI = Test-Path "$env:HOMEPATH\desktop\LaadSettingsGUI.exe"
-    	$SettingsGUI
-	 if($SettingsGUI -eq $false){
+    $FunctionID = Log-Message "SettingsGUI" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
+	$SettingsGUI_TEMP = Test-Path "$env:TEMP\LaadSettingsGUI.exe"
+    $SettingsGUI_DESKTOP = Test-Path "$env:HOMEPATH\Desktop\LaadSettingsGUI.exe"
+
+	if($SettingsGUI_TEMP -eq $false){
+        try{
             [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-            Invoke-WebRequest -Uri https://github.com/mattiewae/update/blob/master/AdobePresets/LaadSettingsGUI.exe?raw=true -OutFile LaadSettingsGUI.exe
-            Copy-Item LaadSettingsGUI.exe -Destination $env:HOMEPATH\desktop
+            Invoke-WebRequest -Uri https://github.com/mattiewae/update/blob/master/AdobePresets/LaadSettingsGUI.exe?raw=true -OutFile LaadSettingsGUI.exe -ErrorAction Stop
+            Write-Host "GUI gedownload"
+        }
+        Catch{
+            $ErrorMessage = $_.Exception.Message
+            $FunctionID    
+            Log-Message $ErrorMessage | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
             }
-            else{
-                # do nothing
+        }
+    else{
+         try{
+                Copy-Item LaadSettingsGUI.exe -Destination $env:HOMEPATH\desktop -ErrorAction Stop
+                Write-Host "Copy GUI naar Desktop"
             }
-}
+            Catch{
+                $ErrorMessage = $_.Exception.Message
+                $FunctionID    
+                Log-Message $ErrorMessage | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
+                }
+            }
+        }
 
 function ClearAdobeMediaCache{
 	$limit = (Get-Date).AddDays(-10)
