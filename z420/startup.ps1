@@ -307,8 +307,23 @@ function ClearAdobeMediaCache{
 		Get-ChildItem -Path $AdobeImport -Recurse -Force | Where-Object { $_.PSIsContainer -and (Get-ChildItem -Path $_.FullName -Recurse -Force | Where-Object { !$_.PSIsContainer }) -eq $null } | Remove-Item -Force -Recurse
  }
 
+function DownloadUpdate{
+    Set-Location -Path $env:TEMP 
+    
+    try{
+        wget https://raw.githubusercontent.com/mattiewae/update/master/z420/startup.ps1 -OutFile update.ps1 -ErrorAction Stop
+        Write-Host "Script gedownload"
+    }
+    catch{
+        $ErrorMessage = $_.Exception.Message
+        Log-Message "Update Script niet gedownload" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
+        Log-Message $ErrorMessage | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
 
-	ClearAdobeMediaCache
+    }
+}
+
+	DownloadUpdate
+    ClearAdobeMediaCache
 	SettingsGUI
 	ClearAdobeExport
 	PresetsMediaEncoder
