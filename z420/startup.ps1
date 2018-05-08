@@ -255,7 +255,7 @@ function SettingsGUI{
             Log-Message $ErrorMessage | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
             }
         }
-    else{
+    elseif($SettingsGUI_DESKTOP -eq $false){
          try{
                 Copy-Item LaadSettingsGUI_V2.exe -Destination $env:HOMEPATH\desktop -ErrorAction Stop
                 $FunctionID  
@@ -267,6 +267,10 @@ function SettingsGUI{
                 $FunctionID    
                 Log-Message $ErrorMessage | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
                 }
+         }
+         Else{
+                Write-Host "GUI settings OK"
+                Log-Message "GUI settings OK" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
          }
 }
 
