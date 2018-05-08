@@ -1,5 +1,4 @@
-function Log-Message
-{
+function Log-Message{
     [CmdletBinding()]
     Param
     (
@@ -261,6 +260,7 @@ function SettingsGUI{
                 Copy-Item LaadSettingsGUI_V2.exe -Destination $env:HOMEPATH\desktop -ErrorAction Stop
                 $FunctionID  
                 Write-Host "Copy GUI naar Desktop"
+                Log-Message "Copy GUI naar Desktop" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
             }
             Catch{
                 $ErrorMessage = $_.Exception.Message
