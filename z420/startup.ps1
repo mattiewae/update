@@ -151,7 +151,7 @@ function PresetsMediaEncoder{
                 }
                 Catch{
                     $ErrorMessage = $_.Exception.Message
-                    Write-host $FunctionID 'Presets reeds gekopieerd'    
+                    Write-host $FunctionID 'Presets Media Encoder reeds gekopieerd'    
                     Log-Message $ErrorMessage | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
                     }
                 }
@@ -162,7 +162,7 @@ function PresetsMediaEncoder{
 	                [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
                     Invoke-WebRequest -Uri https://raw.githubusercontent.com/mattiewae/update/master/z420Stag/Presets/FASPEX%20met%20loudness.epr -OutFile "Faspex met loudness.epr" -ErrorAction Stop
                     Invoke-WebRequest -Uri https://raw.githubusercontent.com/mattiewae/update/master/z420Stag/Presets/FASPEX%20zonder%20loudness.epr  -OutFile "Faspex zonder loudness.epr" -ErrorAction Stop
-                    New-Item -ItemType Directory "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Media Encoder Presets\" -ErrorAction Stop
+                    New-Item -ItemType Directory "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Media Encoder Presets\" -ErrorAction ignore
                     Move-Item *.epr "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Media Encoder Presets\" -ErrorAction Stop
                 }
                 Catch{
