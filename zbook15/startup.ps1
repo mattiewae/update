@@ -13,10 +13,10 @@ function Log-Message
 Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
 
 function SettingsGUI{
-	Set-Location $env:TEMP
+	Set-Location C:\Users\ENG\AppData\Local\Temp
     
     try{
-        Remove-Item "$env:TEMP\LaadSettingsGUI.exe" -ErrorAction Ignore
+        Remove-Item "C:\Users\ENG\AppData\Local\Temp\LaadSettingsGUI.exe" -ErrorAction Ignore
         Remove-Item "$env:HOMEPATH\Desktop\LaadSettingsGUI.exe" -ErrorAction Ignore
     }
     catch{
@@ -25,7 +25,7 @@ function SettingsGUI{
     }
 
     $FunctionID = Log-Message "SettingsGUI" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
-	$SettingsGUI_TEMP = Test-Path "$env:TEMP\LaadSettingsGUI_V2.exe"
+	$SettingsGUI_TEMP = Test-Path "C:\Users\ENG\AppData\Local\Temp\LaadSettingsGUI_V2.exe"
     $SettingsGUI_DESKTOP = Test-Path "$env:HOMEPATH\Desktop\LaadSettingsGUI_V2.exe"
 
 	if($SettingsGUI_TEMP -eq $false){
