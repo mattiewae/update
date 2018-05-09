@@ -85,6 +85,7 @@ Remove-Item "C:\Users\Public\Desktop\Google*" -force
 Remove-Item "C:\Users\Public\Desktop\Teamviewer*" -force
 Remove-Item "C:\Users\Public\Desktop\Quicktime*" -force
 Remove-Item "C:\Users\Public\Desktop\Box*" -force
+Remove-Item "C:\Users\Public\Desktop\Skype*" -force
 
 
 Install-WindowsUpdate -acceptEula -SuppressReboots -criteria "BrowseOnly=0 and IsAssigned=1 and IsHidden=0 and IsInstalled=0 and Type='Software'"
