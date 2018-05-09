@@ -13,7 +13,7 @@ Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Too
 
 Remove-Item C:\Users\ENG\Desktop\encoder_V2*
 
-choco install winrar -y
+choco uninstall install winrar -y
 
 function DHD{
     Set-Location $env:TEMP
