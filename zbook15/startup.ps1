@@ -14,17 +14,49 @@ Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Too
 
 function SettingsGUI{
 	Set-Location $env:TEMP
-	$SettingsGUI = Test-Path "$env:HOMEPATH\desktop\LaadSettingsGUI.exe"
-    	$SettingsGUI
-	 if($SettingsGUI -eq $false){
+    
+    try{
+        Remove-Item "$env:TEMP\LaadSettingsGUI.exe" -ErrorAction Ignore
+        Remove-Item "$env:HOMEPATH\Desktop\LaadSettingsGUI.exe" -ErrorAction Ignore
+    }
+    catch{
+        $ErrorMessage = $_.Exception.Message
+        Log-Message $ErrorMessage | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
+    }
+
+    $FunctionID = Log-Message "SettingsGUI" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
+	$SettingsGUI_TEMP = Test-Path "$env:TEMP\LaadSettingsGUI_V2.exe"
+    $SettingsGUI_DESKTOP = Test-Path "$env:HOMEPATH\Desktop\LaadSettingsGUI_V2.exe"
+
+	if($SettingsGUI_TEMP -eq $false){
+        try{
             [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-            Invoke-WebRequest -Uri https://github.com/mattiewae/update/blob/master/AdobePresets/LaadSettingsGUI.exe?raw=true -OutFile LaadSettingsGUI.exe
-            Copy-Item LaadSettingsGUI.exe -Destination $env:HOMEPATH\desktop
+            Invoke-WebRequest -Uri https://github.com/mattiewae/update/blob/master/AdobePresets/LaadSettingsGUI_V2.exe?raw=true -OutFile LaadSettingsGUI_V2.exe -ErrorAction Stop
+            Write-Host "GUI gedownload"
+        }
+        Catch{
+            $ErrorMessage = $_.Exception.Message
+            $FunctionID    
+            Log-Message $ErrorMessage | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
             }
-            else{
-                # do nothing
+        }
+    elseif($SettingsGUI_DESKTOP -eq $false){
+         try{
+                Copy-Item LaadSettingsGUI_V2.exe -Destination $env:HOMEPATH\desktop -ErrorAction Stop
+                $FunctionID  
+                Write-Host "Copy GUI naar Desktop"
+                Log-Message "Copy GUI naar Desktop" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
             }
-            Log-Message "SettingsGUI" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
+            Catch{
+                $ErrorMessage = $_.Exception.Message
+                $FunctionID    
+                Log-Message $ErrorMessage | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
+                }
+         }
+         Else{
+                Write-Host "GUI settings OK"
+                Log-Message "GUI settings OK" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
+         }
 }
 
 SettingsGUI
