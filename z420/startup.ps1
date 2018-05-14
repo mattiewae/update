@@ -37,6 +37,7 @@ function DHD{
             Invoke-WebRequest -Uri https://github.com/mattiewae/update/raw/master/z420Stag/DHD_config_instellingen2.pdf -OutFile "DHD_config_instellingen2.pdf" -ErrorAction Stop
             Move-Item "DHD_config_instellingen2.pdf" "C:\Users\ENG\Desktop\Allerlei nuttige dingen" -ErrorAction Stop
             Write-Host "DHD PDF gedownload"
+	    Log-Message "DHD PDF gedownload" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
         }
         catch{
             $ErrorMessage = $_.Exception.Message
