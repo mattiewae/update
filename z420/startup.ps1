@@ -13,6 +13,7 @@ Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Too
 
 Remove-Item C:\Users\ENG\Desktop\encoder_V2*
 
+choco install -y filezilla
 
 function DHD{
     Set-Location $env:TEMP
