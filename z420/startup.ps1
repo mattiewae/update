@@ -17,6 +17,38 @@ Remove-Item C:\Users\ENG\Desktop\jonathan.txt -force
 
 choco install -y filezilla
 
+function OT{
+    Set-Location $env:TEMP
+    $OT = Test-Path "C:\Users\ENG\Desktop\Allerlei nuttige dingen\OT.zip"
+    $FunctionID = "DHD"
+
+    if($OT -eq $true){
+        try{
+            Expand-Archive -Path "C:\Users\ENG\Desktop\Allerlei nuttige dingen\OT.zip" -DestinationPath "C:\Users\ENG\Desktop\Allerlei nuttige dingen\OT" -ErrorAction Stop
+            }
+        Catch{
+            $ErrorMessage = $_.Exception.Message
+            Write-host $FunctionID 'Unzip OT'    
+            Log-Message $ErrorMessage | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
+            }
+    }
+    else{
+        try{
+            [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+            Invoke-WebRequest -Uri https://github.com/mattiewae/update/raw/master/OT.zip -OutFile "OT.zip" -ErrorAction Stop
+            Move-Item "OT.zip" "C:\Users\ENG\Desktop\Allerlei nuttige dingen" -ErrorAction Stop
+            Write-Host "OT gedownload"
+	        Log-Message "OT gedownload" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
+        }
+        catch{
+            $ErrorMessage = $_.Exception.Message
+            Write-host $FunctionID 'Probleem met download OTs, check UpdateLog.txt'   
+            Log-Message $ErrorMessage | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
+        }
+    
+    }
+}
+
 function DHD{
     Set-Location $env:TEMP
     $DHD = Test-Path "C:\Users\ENG\Desktop\Allerlei nuttige dingen\DHD_config_instellingen2.pdf"
@@ -313,7 +345,8 @@ function ClearAdobeMediaCache{
 		Get-ChildItem -Path $AdobeImport -Recurse -Force | Where-Object { $_.PSIsContainer -and (Get-ChildItem -Path $_.FullName -Recurse -Force | Where-Object { !$_.PSIsContainer }) -eq $null } | Remove-Item -Force -Recurse
  }
 	
-    ClearAdobeMediaCache
+	OT
+    	ClearAdobeMediaCache
 	SettingsGUI
 	ClearAdobeExport
 	PresetsMediaEncoder
