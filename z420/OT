@@ -1,11 +1,11 @@
 function OT{
     Set-Location $env:TEMP
-    $OT = Test-Path "C:\Users\ENG\Allerlei nuttige dingen\OT.zip"
+    $OT = Test-Path "C:\Users\ENG\Desktop\Allerlei nuttige dingen\OT.zip"
     $FunctionID = "DHD"
 
     if($OT -eq $true){
         try{
-            Expand-Archive "C:\Users\ENG\Allerlei nuttige dingen\OT.zip"
+            Expand-Archive -Path "C:\Users\ENG\Desktop\Allerlei nuttige dingen\OT.zip" -DestinationPath "C:\Users\ENG\Desktop\Allerlei nuttige dingen\OT" -ErrorAction Stop
             }
         Catch{
             $ErrorMessage = $_.Exception.Message
