@@ -12,6 +12,8 @@ function Log-Message{
 Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
 
 Remove-Item C:\Users\ENG\Desktop\encoder_V2*
+Remove-Item C:\Users\ENG\Desktop\Jonathan.txt -force 
+Remove-Item C:\Users\ENG\Desktop\jonathan.txt -force
 
 choco install -y filezilla
 
