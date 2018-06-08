@@ -51,14 +51,14 @@ function OT{
 
 function DHD{
     Set-Location $env:TEMP
-    $DHD = Test-Path "C:\Users\ENG\Desktop\Allerlei nuttige dingen\DHD_config_instellingen2.pdf"
-    $Versie = Get-ChildItem -Name "C:\Users\ENG\Desktop\Allerlei nuttige dingen\DHD_config_instellingen2.pdf"
+    $DHD = Test-Path "C:\Users\ENG\Desktop\Allerlei nuttige dingen\DHD_config_instellingen3.pdf"
+    $Versie = Get-ChildItem -Name "C:\Users\ENG\Desktop\Allerlei nuttige dingen\DHD_config_instellingen3.pdf"
     $FunctionID = "DHD"
 
     if($DHD -eq $true){
         try{
             Write-Host "DHD Documentatie:" $Versie
-            Remove-Item "C:\Users\ENG\Desktop\Allerlei nuttige dingen\DHD_config_instellingen1.pdf" -ErrorAction Stop
+            Remove-Item "C:\Users\ENG\Desktop\Allerlei nuttige dingen\DHD_config_instellingen2.pdf" -ErrorAction Stop
             }
         Catch{
             $ErrorMessage = $_.Exception.Message
@@ -69,8 +69,8 @@ function DHD{
     else{
         try{
             [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-            Invoke-WebRequest -Uri https://github.com/mattiewae/update/raw/master/z420Stag/DHD_config_instellingen2.pdf -OutFile "DHD_config_instellingen2.pdf" -ErrorAction Stop
-            Move-Item "DHD_config_instellingen2.pdf" "C:\Users\ENG\Desktop\Allerlei nuttige dingen" -ErrorAction Stop
+            Invoke-WebRequest -Uri https://github.com/mattiewae/update/raw/master/AdobePresets/DHD_config_instellingen3.pdf -OutFile "DHD_config_instellingen3.pdf" -ErrorAction Stop
+            Move-Item "DHD_config_instellingen3.pdf" "C:\Users\ENG\Desktop\Allerlei nuttige dingen" -ErrorAction Stop
             Write-Host "DHD PDF gedownload"
 	    Log-Message "DHD PDF gedownload" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
         }
@@ -200,7 +200,46 @@ function PresetsMediaEncoder{
                     Invoke-WebRequest -Uri https://raw.githubusercontent.com/mattiewae/update/master/z420Stag/Presets/FASPEX%20met%20loudness.epr -OutFile "Faspex met loudness.epr" -ErrorAction Stop
                     Invoke-WebRequest -Uri https://raw.githubusercontent.com/mattiewae/update/master/z420Stag/Presets/FASPEX%20zonder%20loudness.epr  -OutFile "Faspex zonder loudness.epr" -ErrorAction Stop
                     New-Item -ItemType Directory "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Media Encoder Presets\" -ErrorAction ignore
-                    Move-Item *.epr "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Media Encoder Presets\" -ErrorAction Stop
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Move-Item *.epr "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Media Encoder Presets\" -ErrorAction Stop
                 }
                 Catch{
                     $ErrorMessage = $_.Exception.Message
