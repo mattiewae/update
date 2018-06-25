@@ -15,7 +15,7 @@ Remove-Item C:\Users\ENG\Desktop\encoder_V2*
 Remove-Item C:\Users\ENG\Desktop\Jonathan.txt -force 
 Remove-Item C:\Users\ENG\Desktop\jonathan.txt -force
 
-choco install -y filezilla
+choco uninstall -y libreoffice
 
 function OT{
     Set-Location $env:TEMP
