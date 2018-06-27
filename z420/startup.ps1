@@ -14,7 +14,8 @@ Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Too
 Remove-Item C:\Users\ENG\Desktop\encoder_V2*
 Remove-Item C:\Users\ENG\Desktop\Jonathan.txt -force 
 Remove-Item C:\Users\ENG\Desktop\jonathan.txt -force
-
+$ajalink = "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\AJA\AJA ControlPanel.lnk"
+Copy-Item $ajalink -Destination C:\Users\ENG\Desktop
 choco uninstall -y libreoffice
 
 function OT{
