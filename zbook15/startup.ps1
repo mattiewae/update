@@ -74,6 +74,7 @@ Remove-Item "C:\Users\ENG\Desktop\Skype*" -force
 Remove-Item "C:\Users\ENG\Desktop\Boxstarter*" -force
 Remove-Item "C:\Users\ENG\Desktop\Windir*" -force
 Remove-Item "C:\Users\ENG\Desktop\Google*" -force
+Remove-Item "C:\Users\ENG\Desktop\Micro*" -force
 Remove-Item "C:\Users\Public\Desktop\Avidemux*" -force
 Remove-Item "C:\Users\Public\Desktop\Mozilla*" -force
 Remove-Item "C:\Users\Public\Desktop\Libre*" -force
@@ -86,6 +87,7 @@ Remove-Item "C:\Users\Public\Desktop\Teamviewer*" -force
 Remove-Item "C:\Users\Public\Desktop\Quicktime*" -force
 Remove-Item "C:\Users\Public\Desktop\Box*" -force
 Remove-Item "C:\Users\Public\Desktop\Skype*" -force
+Remove-Item "C:\Users\Public\Desktop\Micro*" -force
 
 
 Install-WindowsUpdate -acceptEula -SuppressReboots -criteria "BrowseOnly=0 and IsAssigned=1 and IsHidden=0 and IsInstalled=0 and Type='Software'"
