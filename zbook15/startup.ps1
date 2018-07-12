@@ -59,7 +59,41 @@ function SettingsGUI{
          }
 }
 
+function ClearAdobeMediaCache{
+	$limit = (Get-Date).AddDays(-10)
+	$MediaCache = "E:\media cache database\Media Cache"
+		# Delete files older than the $limit.
+		Get-ChildItem -Path $MediaCache -Recurse -Force | Where-Object { !$_.PSIsContainer -and $_.CreationTime -lt $limit } | Remove-Item -Force
+		# Delete any empty directories left behind after deleting the old files.
+		Get-ChildItem -Path $MediaCache -Recurse -Force | Where-Object { $_.PSIsContainer -and (Get-ChildItem -Path $_.FullName -Recurse -Force | Where-Object { !$_.PSIsContainer }) -eq $null } | Remove-Item -Force -Recurse
+    
+    $CacheFiles = "E:\media cache\Media Cache Files"
+        # Delete files older than the $limit.
+		Get-ChildItem -Path $CacheFiles -Recurse -Force | Where-Object { !$_.PSIsContainer -and $_.CreationTime -lt $limit } | Remove-Item -Force
+		# Delete any empty directories left behind after deleting the old files.
+		Get-ChildItem -Path $CacheFiles -Recurse -Force | Where-Object { $_.PSIsContainer -and (Get-ChildItem -Path $_.FullName -Recurse -Force | Where-Object { !$_.PSIsContainer }) -eq $null } | Remove-Item -Force -Recurse
+
+    $PeakFiles = "E:\media cache\Peak Files"
+        # Delete files older than the $limit.
+		Get-ChildItem -Path $PeakFiles -Recurse -Force | Where-Object { !$_.PSIsContainer -and $_.CreationTime -lt $limit } | Remove-Item -Force
+		# Delete any empty directories left behind after deleting the old files.
+		Get-ChildItem -Path $PeakFiles -Recurse -Force | Where-Object { $_.PSIsContainer -and (Get-ChildItem -Path $_.FullName -Recurse -Force | Where-Object { !$_.PSIsContainer }) -eq $null } | Remove-Item -Force -Recurse
+
+    $P2 = "E:\P2"
+        # Delete files older than the $limit.
+		Get-ChildItem -Path $P2 -Recurse -Force | Where-Object { !$_.PSIsContainer -and $_.CreationTime -lt $limit } | Remove-Item -Force
+		# Delete any empty directories left behind after deleting the old files.
+		Get-ChildItem -Path $P2 -Recurse -Force | Where-Object { $_.PSIsContainer -and (Get-ChildItem -Path $_.FullName -Recurse -Force | Where-Object { !$_.PSIsContainer }) -eq $null } | Remove-Item -Force -Recurse
+
+    $AdobeImport = "E:\AdobeImport"
+        # Delete files older than the $limit.
+		Get-ChildItem -Path $AdobeImport -Recurse -Force | Where-Object { !$_.PSIsContainer -and $_.CreationTime -lt $limit } | Remove-Item -Force
+		# Delete any empty directories left behind after deleting the old files.
+		Get-ChildItem -Path $AdobeImport -Recurse -Force | Where-Object { $_.PSIsContainer -and (Get-ChildItem -Path $_.FullName -Recurse -Force | Where-Object { !$_.PSIsContainer }) -eq $null } | Remove-Item -Force -Recurse
+ }
+
 SettingsGUI
+ClearAdobeMediaCache
 
 $Connect = Test-Connection 'www.google.com' -Quiet
 if($Connect = $true){
