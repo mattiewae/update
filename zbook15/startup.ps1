@@ -12,6 +12,38 @@ function Log-Message
 
 Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
 
+function OT{
+    Set-Location $env:TEMP
+    $OT = Test-Path "C:\Users\ENG\Desktop\Allerlei nuttige dingen\OT.zip"
+    $FunctionID = "DHD"
+
+    if($OT -eq $true){
+        try{
+            Expand-Archive -Path "C:\Users\ENG\Desktop\Allerlei nuttige dingen\OT.zip" -DestinationPath "C:\Users\ENG\Desktop\Allerlei nuttige dingen\OT" -ErrorAction Stop
+            }
+        Catch{
+            $ErrorMessage = $_.Exception.Message
+            Write-host $FunctionID 'Unzip OT'    
+            Log-Message $ErrorMessage | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
+            }
+    }
+    else{
+        try{
+            [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+            Invoke-WebRequest -Uri https://github.com/mattiewae/update/raw/master/OT.zip -OutFile "OT.zip" -ErrorAction Stop
+            Move-Item "OT.zip" "C:\Users\ENG\Desktop\Allerlei nuttige dingen" -ErrorAction Stop
+            Write-Host "OT gedownload"
+	        Log-Message "OT gedownload" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
+        }
+        catch{
+            $ErrorMessage = $_.Exception.Message
+            Write-host $FunctionID 'Probleem met download OTs, check UpdateLog.txt'   
+            Log-Message $ErrorMessage | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
+        }
+    
+    }
+}
+
 function SettingsGUI{
 	Set-Location C:\Users\ENG\AppData\Local\Temp
     
@@ -105,6 +137,7 @@ function ClearAdobeMediaCache{
 		Get-ChildItem -Path $AdobeProjects -Recurse -Force | Where-Object { $_.PSIsContainer -and (Get-ChildItem -Path $_.FullName -Recurse -Force | Where-Object { !$_.PSIsContainer }) -eq $null }		
  }
 
+OT
 SettingsGUI
 ClearAdobeMediaCache
 
