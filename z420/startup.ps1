@@ -361,7 +361,7 @@ function ClearAdobeMediaCache{
 	Presets
 	ReplaceLaadSettings
 	ReplaceBackupSettings
-	#UpdateEncoder
+	UpdateEncoder
 	UpdateApps
 	Remove-DesktopItems
 	Install-WindowsUpdate -acceptEula -SuppressReboots -criteria "BrowseOnly=0 and IsAssigned=1 and IsHidden=0 and IsInstalled=0 and Type='Software'"
