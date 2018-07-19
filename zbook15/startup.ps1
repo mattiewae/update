@@ -160,7 +160,7 @@ function ClearAdobeMediaCache{
 OT
 SettingsGUI
 ClearAdobeMediaCache
-#UpdateEncoder
+UpdateEncoder
 
 $Connect = Test-Connection 'www.google.com' -Quiet
 if($Connect = $true){
