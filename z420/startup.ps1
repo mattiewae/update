@@ -119,7 +119,7 @@ function ReplaceBackupSettings{
 }
 
 function UpdateEncoder{
-    $encoder = Test-Path C:\encoder\encoder_V33_16CH.exe
+    $encoder = Test-Path C:\encoder\encoder_V35_16CH.exe
 
     if($encoder -eq $true){
  
@@ -129,11 +129,11 @@ function UpdateEncoder{
     else{
         Set-Location C:\Users\ENG\Downloads
     	[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-        Invoke-WebRequest -Uri https://github.com/mattiewae/update/blob/master/z420/Encoder_V33_16ch.exe?raw=true -OutFile Encoder_V33_16ch.exe
-    	Copy-Item Encoder_V33_16ch.exe C:\Users\ENG\Desktop
-        Copy-Item Encoder_V33_16ch.exe 'C:\Users\ENG\Desktop\Admin Tools'
-    	Copy-Item Encoder_V33_16ch.exe 'C:\encoder\'
-    	Remove-Item Encoder_V33_16ch.exe
+        Invoke-WebRequest -Uri https://github.com/mattiewae/update/raw/master/AdobePresets/Encoder_V35_16ch.exe -OutFile Encoder_V35_16ch.exe
+    	Copy-Item Encoder_V35_16ch.exe C:\Users\ENG\Desktop
+        Copy-Item Encoder_V35_16ch.exe 'C:\Users\ENG\Desktop\Admin Tools'
+    	Copy-Item Encoder_V35_16ch.exe 'C:\encoder\'
+    	Remove-Item Encoder_V34_16ch*
     	Remove-Item C:\Users\ENG\Desktop\encoderV32*.exe 
         }
 }
@@ -361,7 +361,7 @@ function ClearAdobeMediaCache{
 	Presets
 	ReplaceLaadSettings
 	ReplaceBackupSettings
-	UpdateEncoder
+	#UpdateEncoder
 	UpdateApps
 	Remove-DesktopItems
 	Install-WindowsUpdate -acceptEula -SuppressReboots -criteria "BrowseOnly=0 and IsAssigned=1 and IsHidden=0 and IsInstalled=0 and Type='Software'"
