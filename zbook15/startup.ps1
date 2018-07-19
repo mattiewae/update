@@ -12,6 +12,26 @@ function Log-Message
 
 Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
 
+function UpdateEncoder{
+    $encoder = Test-Path C:\encoder\encoder_V35_16CH.exe
+
+    if($encoder -eq $true){
+ 
+    Write-Host "encoder uptodate"
+
+    }
+    else{
+        Set-Location C:\Users\ENG\Downloads
+    	[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+        Invoke-WebRequest -Uri https://github.com/mattiewae/update/raw/master/AdobePresets/Encoder_V35_16ch.exe -OutFile Encoder_V35_16ch.exe
+    	Copy-Item Encoder_V35_16ch.exe C:\Users\ENG\Desktop
+        Copy-Item Encoder_V35_16ch.exe 'C:\Users\ENG\Desktop\Admin Tools'
+    	Copy-Item Encoder_V35_16ch.exe 'C:\encoder\'
+    	Remove-Item Encoder_V34_16ch*
+    	Remove-Item "C:\Users\ENG\Desktop\Encoder*V33*" 
+        }
+}
+
 function OT{
     Set-Location $env:TEMP
     $OT = Test-Path "C:\Users\ENG\Desktop\Allerlei nuttige dingen\OT.zip"
@@ -140,6 +160,7 @@ function ClearAdobeMediaCache{
 OT
 SettingsGUI
 ClearAdobeMediaCache
+#UpdateEncoder
 
 $Connect = Test-Connection 'www.google.com' -Quiet
 if($Connect = $true){
