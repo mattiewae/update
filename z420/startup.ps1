@@ -134,9 +134,7 @@ function UpdateEncoder{
         Copy-Item Encoder_V35_16ch.exe 'C:\Users\ENG\Desktop\Admin Tools'
     	Copy-Item Encoder_V35_16ch.exe 'C:\encoder\'
     	Remove-Item Encoder_V34_16ch*
-    	Remove-Item C:\Users\ENG\Desktop\encoderV32*.exe 
-	Remove-Item C:\Users\ENG\Desktop\encoderV33*.exe
-	Remove-Item C:\Users\ENG\Desktop\encoderV34*.exe 
+    	Remove-Item "C:\Users\ENG\Desktop\Encoder*V33*" 
         }
 }
 
