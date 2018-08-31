@@ -17,6 +17,10 @@ Remove-Item C:\Users\ENG\Desktop\jonathan.txt -force
 $ajalink = "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\AJA\AJA ControlPanel.lnk"
 Copy-Item $ajalink -Destination C:\Users\ENG\Desktop
 choco uninstall -y libreoffice
+choco install -y bleachbit
+choco uninstall -y ccleaner
+Remove-Item C:\Users\ENG\Desktop\Bleach*
+Remove-Item C:\Users\Public\Desktop\Bleach*
 
 function OT{
     Set-Location $env:TEMP
