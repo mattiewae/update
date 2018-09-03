@@ -98,18 +98,18 @@ function ReplaceLaadSettings{
 }
 
 function DownloadDocumentatie{
-	Set-Location $env:TEMP
-	$docs = Test-Path "C:\Users\ENG\Desktop\Admin Tools\Scripts\documentatie_wagens
-	if($docs -eq $true){
-		Write-host "Documentatie upto-date"
-		}
-	else{
-		[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-        	Invoke-WebRequest -Uri https://github.com/mattiewae/update/blob/master/AdobePresets/documentatie_wagens.zip?raw=true
-		Expand-Archive -Path "documentatie_wagens.zip" -DestinationPath "C:\Users\ENG\Desktop\Admin Tools\"
-		Write-Host 'Documetatie downloaded'
-	}
-
+    Set-Location $env:TEMP
+        
+    if($docs -eq $true){
+        Write-Host 'BackupSettings replaced' 
+    }
+    else{
+        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+        Invoke-WebRequest -Uri https://github.com/mattiewae/update/blob/master/AdobePresets/documentatie_wagens.zip?raw=true -OutFile documentatie.zip
+        Expand-Archive -Path "documentatie.zip" -DestinationPath "C:\Users\ENG\Desktop\Admin Tools\"
+        Write-Host 'documentatie downloaded'
+    }
+}
 
 function ReplaceBackupSettings{
     Set-Location $env:TEMP
@@ -354,7 +354,8 @@ function ClearAdobeMediaCache{
 		# Delete any empty directories left behind after deleting the old files.
 		Get-ChildItem -Path $AdobeImport -Recurse -Force | Where-Object { $_.PSIsContainer -and (Get-ChildItem -Path $_.FullName -Recurse -Force | Where-Object { !$_.PSIsContainer }) -eq $null } | Remove-Item -Force -Recurse
  }
-	
+ 
+	DownloadDocumentatie
 	OT
     	ClearAdobeMediaCache
 	SettingsGUI
