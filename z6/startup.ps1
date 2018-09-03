@@ -97,6 +97,20 @@ function ReplaceLaadSettings{
     }
 }
 
+function DownloadDocumentatie{
+	Set-Location $env:TEMP
+	$docs = Test-Path "C:\Users\ENG\Desktop\Admin Tools\Scripts\documentatie_wagens
+	if($docs -eq $true){
+		Write-host "Documentatie upto-date"
+		}
+	else{
+		[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+        	Invoke-WebRequest -Uri https://github.com/mattiewae/update/blob/master/AdobePresets/documentatie_wagens.zip?raw=true
+		Expand-Archive -Path "documentatie_wagens.zip" -DestinationPath "C:\Users\ENG\Desktop\Admin Tools\"
+		Write-Host 'Documetatie downloaded'
+	}
+
+
 function ReplaceBackupSettings{
     Set-Location $env:TEMP
     $acl = Get-Acl -Path "C:\Users\ENG\Desktop\Admin Tools\Scripts\Dagproject.ps1"
@@ -196,46 +210,7 @@ function PresetsMediaEncoder{
                     Invoke-WebRequest -Uri https://raw.githubusercontent.com/mattiewae/update/master/z420Stag/Presets/FASPEX%20met%20loudness.epr -OutFile "Faspex met loudness.epr" -ErrorAction Stop
                     Invoke-WebRequest -Uri https://raw.githubusercontent.com/mattiewae/update/master/z420Stag/Presets/FASPEX%20zonder%20loudness.epr  -OutFile "Faspex zonder loudness.epr" -ErrorAction Stop
                     New-Item -ItemType Directory "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Media Encoder Presets\" -ErrorAction ignore
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Move-Item *.epr "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Media Encoder Presets\" -ErrorAction Stop
+		    Move-Item *.epr "C:\Users\ENG\Desktop\Admin Tools\Scripts\Presets\Media Encoder Presets\" -ErrorAction Stop
                 }
                 Catch{
                     $ErrorMessage = $_.Exception.Message
