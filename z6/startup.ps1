@@ -232,7 +232,6 @@ function UpdateApps{
          cinst notepadplusplus.install -y
          cinst jre8 -y 
          cinst vlc -y
-         cinst ccleaner -y
          cinst adobeair -y
          cinst windirstat -y
          cinst quicktime -y 
