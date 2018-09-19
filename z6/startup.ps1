@@ -12,6 +12,9 @@ function Log-Message{
 Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
 
 choco install -y filezilla
+choco uninstall -y libreoffice
+choco install -y bleachbit
+choco uninstall -y ccleaner
 
 function OT{
     Set-Location $env:TEMP
