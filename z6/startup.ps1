@@ -241,8 +241,7 @@ function UpdateApps{
          cinst irfanview -y
          cinst 7zip.install -y
          cinst javaruntime -y
-         cinst putty -y  
-         cinst libreoffice -y
+         cinst putty -y 
          cup all -y 
         }
     else{
