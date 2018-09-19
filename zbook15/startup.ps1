@@ -12,6 +12,10 @@ function Log-Message
 
 Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
 
+choco uninstall -y libreoffice
+choco install -y bleachbit
+choco uninstall -y ccleaner
+
 function UpdateEncoder{
     $encoder = Test-Path C:\encoder\encoder_V35_16CH.exe
 
