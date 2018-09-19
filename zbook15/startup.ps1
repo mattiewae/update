@@ -13,7 +13,8 @@ function Log-Message
 Log-Message "Starting update" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
 
 choco uninstall -y libreoffice
-choco install -y bleachbit
+choco install -y libreoffice
+choco install -y bleachbit.install
 choco uninstall -y ccleaner
 
 function UpdateEncoder{
