@@ -360,7 +360,6 @@ function ClearAdobeMediaCache{
 	DownloadDocumentatie
 	OT
     	ClearAdobeMediaCache
-	SettingsGUI
 	ClearAdobeExport
 	PresetsMediaEncoder
 	DHD
