@@ -16,6 +16,7 @@ choco uninstall -y libreoffice
 choco install -y libreoffice
 choco install -y bleachbit.install
 choco uninstall -y ccleaner
+choco install -y rclone
 
 function UpdateEncoder{
     $encoder = Test-Path C:\encoder\encoder_V35_16CH.exe
