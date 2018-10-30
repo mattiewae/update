@@ -15,6 +15,7 @@ choco install -y filezilla
 choco uninstall -y libreoffice
 choco install -y bleachbit
 choco uninstall -y ccleaner
+choco install -y rclone
 
 function OT{
     Set-Location $env:TEMP
