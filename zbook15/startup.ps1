@@ -179,6 +179,7 @@ else{
 
 Remove-Item "C:\Users\ENG\Desktop\Skype*" -force
 Remove-Item "C:\Users\ENG\Desktop\Boxstarter*" -force
+Remove-Item "C:\Users\ENG\Public\Boxstarter*" -force
 Remove-Item "C:\Users\ENG\Desktop\Windir*" -force
 Remove-Item "C:\Users\ENG\Desktop\Google*" -force
 Remove-Item "C:\Users\ENG\Desktop\Micro*" -force
