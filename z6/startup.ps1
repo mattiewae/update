@@ -253,6 +253,7 @@ function UpdateApps{
 
 function Remove-DesktopItems{
     Remove-Item "C:\Users\ENG\Desktop\Boxstarter*" -force
+    Remove-Item "C:\Users\ENG\Public\Boxstarter*" -force
     Remove-Item "C:\Users\Public\Desktop\Avidemux*" -force
     Remove-Item "C:\Users\ENG\Desktop\Mozilla*" -force
     Remove-Item "C:\Users\ENG\Desktop\Boxstarter*" -force
