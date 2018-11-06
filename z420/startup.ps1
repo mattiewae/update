@@ -357,11 +357,11 @@ function ClearAdobeMediaCache{
 		# Delete any empty directories left behind after deleting the old files.
 		Get-ChildItem -Path $AdobeExport -Recurse -Force | Where-Object { $_.PSIsContainer -and (Get-ChildItem -Path $_.FullName -Recurse -Force | Where-Object { !$_.PSIsContainer }) -eq $null }			
    
-   $AdobeImport = "E:\AdobeProjects"
+   $AdobeProjects = "E:\AdobeProjects"
         # Delete files older than the $limit.
-		Get-ChildItem -Path $AdobeImport -Recurse -Force | Where-Object { !$_.PSIsContainer -and $_.CreationTime -lt $limit } | Remove-Item -Force
+		Get-ChildItem -Path $AdobeProjects -Recurse -Force | Where-Object { !$_.PSIsContainer -and $_.CreationTime -lt $limit } | Remove-Item -Force
 		# Delete any empty directories left behind after deleting the old files.
-		Get-ChildItem -Path $AdobeImport -Recurse -Force | Where-Object { $_.PSIsContainer -and (Get-ChildItem -Path $_.FullName -Recurse -Force | Where-Object { !$_.PSIsContainer }) -eq $null } | Remove-Item -Force -Recurse
+		Get-ChildItem -Path $AdobeProjects -Recurse -Force | Where-Object { $_.PSIsContainer -and (Get-ChildItem -Path $_.FullName -Recurse -Force | Where-Object { !$_.PSIsContainer }) -eq $null } | Remove-Item -Force -Recurse
  }
 	
 	OT
