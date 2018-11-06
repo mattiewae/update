@@ -16,7 +16,6 @@ choco uninstall -y libreoffice
 choco install -y libreoffice
 choco install -y bleachbit.install
 choco uninstall -y ccleaner
-choco install -y rclone
 
 function UpdateEncoder{
     $encoder = Test-Path C:\encoder\encoder_V35_16CH.exe
@@ -179,7 +178,6 @@ else{
 
 Remove-Item "C:\Users\ENG\Desktop\Skype*" -force
 Remove-Item "C:\Users\ENG\Desktop\Boxstarter*" -force
-Remove-Item "C:\Users\ENG\Public\Boxstarter*" -force
 Remove-Item "C:\Users\ENG\Desktop\Windir*" -force
 Remove-Item "C:\Users\ENG\Desktop\Google*" -force
 Remove-Item "C:\Users\ENG\Desktop\Micro*" -force
@@ -196,13 +194,11 @@ Remove-Item "C:\Users\Public\Desktop\Quicktime*" -force
 Remove-Item "C:\Users\Public\Desktop\Box*" -force
 Remove-Item "C:\Users\Public\Desktop\Skype*" -force
 Remove-Item "C:\Users\Public\Desktop\Micro*" -force
-choco install -y bleachbit
-choco uninstall -y ccleaner
-Remove-Item C:\Users\ENG\Desktop\Bleach*
-Remove-Item C:\Users\Public\Desktop\Bleach*
+Remove-Item "C:\Users\Public\Desktop\Boxstarter**" -force
+Remove-Item "C:\Users\ENG\Desktop\Bleach*"
+Remove-Item "C:\Users\Public\Desktop\Bleach*"
 
 
 Install-WindowsUpdate -acceptEula -SuppressReboots -criteria "BrowseOnly=0 and IsAssigned=1 and IsHidden=0 and IsInstalled=0 and Type='Software'"
 
 Log-Message "Update Completed" | Out-File -Append "C:\Users\ENG\Desktop\Admin Tools\UpdateLog.txt"
-
