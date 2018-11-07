@@ -117,7 +117,7 @@ function SettingsGUI{
 }
 
 function ClearAdobeMediaCache{
-	$limit = (Get-Date).AddDays(-10)
+	$limit = (Get-Date).AddDays(-20)
 	
 	$MediaCache = "E:\media cache database\Media Cache"
 		# Delete files older than the $limit.
