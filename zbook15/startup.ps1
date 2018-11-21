@@ -162,10 +162,7 @@ function ClearAdobeMediaCache{
 		Get-ChildItem -Path $AdobeProjects -Recurse -Force | Where-Object { $_.PSIsContainer -and (Get-ChildItem -Path $_.FullName -Recurse -Force | Where-Object { !$_.PSIsContainer }) -eq $null }		
  }
 
-OT
-SettingsGUI
 ClearAdobeMediaCache
-UpdateEncoder
 
 $Connect = Test-Connection 'www.google.com' -Quiet
 if($Connect = $true){
