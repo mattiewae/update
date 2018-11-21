@@ -382,14 +382,12 @@ Log-Message "Update Completed" | Out-File -Append "C:\Users\ENG\Desktop\Admin To
     
  }
  
-	DownloadDocumentatie
+	
 	OT
     	ClearAdobeMediaCache
 	ClearAdobeExport
-	PresetsMediaEncoder
-	DHD
-	Presets
-	ReplaceLaadSettings
+	PresetsMediaEncoder	
+	Presets	
 	ReplaceBackupSettings
 	UpdateEncoder
 	UpdateApps
